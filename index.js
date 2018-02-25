@@ -26,6 +26,8 @@ app.use(bodyParser.urlencoded({
 //     }
 // });
 
+require('./routes')(app, db);
+
 
 app.listen(app.get('port'), () => {
     // console.log('⭐  status', utils.mainCron.running);
