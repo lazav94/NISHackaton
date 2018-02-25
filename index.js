@@ -4,11 +4,6 @@ const app = express();
 const mongoose = require('mongoose');
 
 
-process.on('unhandledRejection', (reason, p) => {
-    console.log('🚧 UnhandledPromiseRejectionWarning: Unhandled promise rejection', p, ' reason: ', reason);
-});
-
-
 app.set('port', (process.env.PORT || 8081));
 
 
