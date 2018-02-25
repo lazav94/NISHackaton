@@ -4,6 +4,7 @@ require('dotenv').config();
 module.exports = (app, db) => {
 
     app.get('/', (req, res) => {
+        console.log('AJDE PRORADI')
         res.send('Jenna is here!');
       });
     
@@ -41,10 +42,11 @@ module.exports = (app, db) => {
         type = 'message';
       }
       try {
-        const bot = await Bot.findOne({ id })
-          .populate('positions')
-          .exec();
-        await conversation(id, data, bot, type, false);
+        // const bot = await Bot.findOne({ id })
+        //   .populate('positions')
+        //   .exec();
+        // await conversation(id, data, bot, type, false);
+        console.log("HAOS")
         res.status(200).end();
       } catch (e) {
         res.status(404).send('Bot not found!');
