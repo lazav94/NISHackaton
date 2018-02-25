@@ -9,19 +9,21 @@ module.exports = (app, db) => {
       });
     
       app.get('/webhook', (req, res) => {
-        if (req.query['hub.verify_token'] === process.env.VERIFY_TOKEN) {
-          res.send(req.query['hub.challenge']);
-        }
-        res.send('Error, wrong token');
+          res.send(200);
+        // if (req.query['hub.verify_token'] === process.env.VERIFY_TOKEN) {
+        //   res.send(req.query['hub.challenge']);
+        // }
+        // res.send('Error, wrong token');
       });
 
 
       app.post('/webhook', (req, res) => {
-        const id = req.body.entry[0].id;
+          res.send(200);
+        // const id = req.body.entry[0].id;
         // console.log("************");
         // console.log(id);
         // console.log("************");
-          res.redirect(307, `/webhook/${id}`);
+        //   res.redirect(307, `/webhook/${id}`);
       });
 
 
