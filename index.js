@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({
 //     }
 // });
 
-require('./routes')(app, db);
+require('./routes')(app/*, db*/);
 
 
 app.listen(app.get('port'), () => {
