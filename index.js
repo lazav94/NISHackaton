@@ -21,12 +21,12 @@ app.use(bodyParser.urlencoded({
 
 
 
-mongoose.Promise = global.Promise;
-mongoose.connect(DBurl, {
-    useMongoClient: true
-}, (err, db) => {
-    if (!err) {
-        require('./routes')(app, db);
-        console.log('Connection to database established!');
-    }
-});
+// mongoose.Promise = global.Promise;
+// mongoose.connect(DBurl, {
+//     useMongoClient: true
+// }, (err, db) => {
+//     if (!err) {
+//         require('./routes')(app, db);
+//         console.log('Connection to database established!');
+//     }
+// });
