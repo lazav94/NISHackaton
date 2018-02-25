@@ -26,10 +26,10 @@ app.use(bodyParser.urlencoded({
 //     }
 // });
 
-require('./routes')(app/*, db*/);
+require('./routes')(app /*, db*/ );
 
 
 app.listen(app.get('port'), () => {
     // console.log('⭐  status', utils.mainCron.running);
     console.log('Running on port:', app.get('port'));
-  });
+});
