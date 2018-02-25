@@ -25,3 +25,9 @@ app.use(bodyParser.urlencoded({
 //         console.log('Connection to database established!');
 //     }
 // });
+
+
+app.listen(app.get('port'), () => {
+    // console.log('⭐  status', utils.mainCron.running);
+    console.log('Running on port:', app.get('port'));
+  });
