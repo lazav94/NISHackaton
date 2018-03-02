@@ -139,7 +139,7 @@ function sendGenericTemplate(sender, text, image_url, title, subtitle ) {
     },
   };
   return new Promise((resolve, reject) => {
-    sendRequest(messageTemplateData, sender, token).then(() => {
+    sendRequest(messageTemplateData, sender).then(() => {
       resolve();
     });
   });
