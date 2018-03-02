@@ -100,23 +100,6 @@ function sendQuickReplies(sender, text, quickReplies) {
 
 
 // buttons 
-const buttons = [
-  {
-    title: 'Apply Now!',
-    type: 'postback',
-    payload: 'apply',
-  },
-  {
-    title: 'Show Open Positions',
-    type: 'postback',
-    payload: 'positions',
-  },
-  {
-    title: `About ${bot.companyName}`,
-    type: 'postback',
-    payload: 'about_company',
-  },
-],
 
 
 function sendGenericTemplate(sender, text, imageUrl, title, subtitle ) {
@@ -133,7 +116,23 @@ function sendGenericTemplate(sender, text, imageUrl, title, subtitle ) {
             title,
             subtitle,
             image_url,
-            buttons
+            buttons:  [
+              {
+                title: 'Apply Now!',
+                type: 'postback',
+                payload: 'apply',
+              },
+              {
+                title: 'Show Open Positions',
+                type: 'postback',
+                payload: 'positions',
+              },
+              {
+                title: `About ${bot.companyName}`,
+                type: 'postback',
+                payload: 'about_company',
+              },
+            ],
           },
         ],
       },
