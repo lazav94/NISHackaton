@@ -7,6 +7,8 @@ require('dotenv').config();
 
 
 const url = 'https://graph.facebook.com/v2.11/me/messages';
+const token = process.env.ACCESS_TOKEN;
+
 
 function userInfo(id) {
   const url = `https://graph.facebook.com/${id}?fields=first_name,last_name,age_range,gender,profile_pic&token=${token}`;
