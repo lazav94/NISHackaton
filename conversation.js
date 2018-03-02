@@ -1,4 +1,3 @@
-
 const sendTextMessage = require('./messenger').sendTextMessage;
 
 module.exports = async (id, data, type) => {
@@ -9,14 +8,17 @@ module.exports = async (id, data, type) => {
         // console.log('📦', data);
         console.log('data', data.length)
         for (let i = 0; i < data.length; i += 1) {
-            
+
 
             const event = data[i];
             let text = event.message.text
             const sender = event.sender.id;
-            console.log('Text: ', text);
-            await sendTextMessage(sender, ['HACKATON1: text']);
-            
+            if (event.message && event.message.text) {
+                console.log('Text: ', text);
+                await sendTextMessage(sender, ['HACKATON1: text']);
+
+
+            }
         }
     } else {
         console.log('JDFKJDKLSFJKLDJFKSL');
