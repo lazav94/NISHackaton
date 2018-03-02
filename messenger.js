@@ -54,7 +54,7 @@ function getToken(url) {
 
 
 
-const token = "EAACcvCFTOBsBAHhfarujJRDiWA241GJRjKZAwQaKn8ZAqCZCbbQtWrzVXwqfZBj2LBnNqs6x5Iw5umzibEHECqtFuObkws9rlcyeiZAJN8fgRgvKZBxBxujT7EtRxxfVkcvzsXyIl2L6XZCylY6gXhODiURmjvaerFZCNXyKZCFnH9QZDZD"
+const token = "EAACcvCFTOBsBAABkYLVmfAJxQpU8eaOJL4ZAfmL5Q9hwTwL9XvVz518tTz7VBMak9jp2E9F439UNdNwN8Ms8YNmNUyGHfG1XhyLLF0aR6rkvfmDdUgq50WlKIjy7bYHFUvsftTUIao9lOb70s2Go6GMPhksUPal6mtiaRfgZDZD"
 const url = 'https://graph.facebook.com/v2.11/me/messages';
 
 function userInfo(id) {
