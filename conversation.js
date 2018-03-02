@@ -1,9 +1,3 @@
-// const FBMessenger = require('fb-messenger');
-const token = process.env.ACCESS_TOKEN;
-// var messenger = new FBMessenger(token);
-console.log(token);
-const request = require('request');
-
 
 const sendTextMessage = require('./messenger').sendTextMessage;
 
@@ -18,7 +12,7 @@ module.exports = async (id, data, type) => {
             const event = data[i];
             const sender = event.sender.id;
             console.log('IDEMOO');
-            await sendTextMessage(sender, 'HACKATON1');
+            await sendTextMessage(sender, ['HACKATON1']);
             return;
             
         }
