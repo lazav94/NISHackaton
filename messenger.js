@@ -5,12 +5,13 @@ const FBMessenger = require('fb-messenger');
 const async = require('async');
 // const Bot = require('../models/bot.model');
 // const User = require('../models/user.model');
+require('dotenv').config();
 
 
 
 
 const token = process.env.ACCESS_TOKEN;
-
+console.log(token);
 const url = 'https://graph.facebook.com/v2.11/me/messages';
 
 function userInfo(id) {
