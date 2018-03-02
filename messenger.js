@@ -9,6 +9,7 @@ const async = require('async');
 
 
 
+const token = process.env.ACCESS_TOKEN;
 
 const url = 'https://graph.facebook.com/v2.11/me/messages';
 
@@ -304,12 +305,12 @@ function sendYesNoQuickReplies(sender, text, quickReplies, bot) {
   sendRequest(messageData, sender, token, bot);
 }
 
-function sendTextMessage(sender, text, bot) {
+function sendTextMessage(sender, text) {
   return new Promise((resolve, reject) => {
     const q = async.queue(async (task, callback) => {
       await sendRequest({
         text: task,
-      }, sender, token, bot);
+      }, sender, token);
       callback();
     }, 1);
 
@@ -328,7 +329,7 @@ function sendTextMessage(sender, text, bot) {
   });
 }
 
-function sendRequest(messageData, sender, bot) {
+function sendRequest(messageData, sender) {
   return new Promise((resolve, reject) => {
     request({
       url,
@@ -348,8 +349,6 @@ function sendRequest(messageData, sender, bot) {
       } else if (response.body.error) {
         console.log('Error: ', response.body.error);
       } else {
-        console.log('🏈 saving out message');
-        saveOutMessage(bot, messageData);
         resolve();
       }
     });
