@@ -1,6 +1,7 @@
 const sendTextMessage = require('./messenger').sendTextMessage;
 const sendQuickReplies = require('./messenger').sendQuickReplies;
 const sendGenericTemplate = require('./messenger').sendGenericTemplate;
+const sendLocationButton = require('./messenger').sendLocationButton;
 module.exports = async (id, data, type) => {
     console.log('Conversation');
 
@@ -16,7 +17,8 @@ module.exports = async (id, data, type) => {
                 await sendTextMessage(sender, [`HACKATON1: ${text}`]);
                 await sendQuickReplies(sender, 'Opa', ['1','1']);
                 await sendGenericTemplate(sender,  'text', 'http://www.romania-insider.com/wp-content/uploads/2012/07/NIS-gazprom1.jpg', 'title', 'subtitle')
-            }
+                await sendLocationButton(sender);
+          }
         }
     } else {
         console.log('Not type message');

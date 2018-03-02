@@ -146,6 +146,65 @@ function sendGenericTemplate(sender, text, image_url, title, subtitle ) {
 }
 
 
+async function sendLocationButton(sender){
+  const messageTemplateData = {
+    "content_type":"location"
+  };
+
+  return new Promise((resolve, reject) => {
+    sendRequest(messageTemplateData, sender).then(() => {
+      resolve();
+    });
+  });
+
+}
+
+async function sendPositionTemplate(elements, messageData) {
+  console.log('Get position template');
+  const sender = messageData.sender;
+  const bot = messageData.bot;
+  const token = messageData.token;
+
+
+  // Get position image
+  const messageTemplateData = {
+    attachment: {
+      type: 'template',
+      payload: {
+        template_type: 'generic',
+        elements: [
+          {
+            title: `${position.name}`,
+            subtitle: `${position.shortDescription}`,
+            image_url: ((position && position.positionImg && position.positionImg !== '') ? position.positionImg : 'https://s2.postimg.org/3y41etr6h/Artboard_2_copy.png'),
+            buttons: [
+              {
+                title: 'Apply Now!',
+                type: 'postback',
+                payload: `${position.name}_apply`,
+              },
+              {
+                title: 'Other Positions',
+                type: 'postback',
+                payload: 'positions',
+              },
+            ],
+          },
+        ],
+      },
+    },
+  };
+  return new Promise((resolve, reject) => {
+    sendRequest(messageTemplateData, sender).then(() => {
+      resolve();
+    });
+  });
+}
+
+
+
+
+
 module.exports = {
   userInfo,
   sendTextMessage,
