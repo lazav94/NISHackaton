@@ -23,5 +23,4 @@ module.exports = async (id, data, type) => {
     } else {
         console.log('Not type message');
     }
-
 }
