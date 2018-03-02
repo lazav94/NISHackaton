@@ -1,5 +1,6 @@
 require('dotenv').config();
-
+const token = process.env.ACCESS_TOKEN;
+var messenger = new FBMessenger(token);
 
 module.exports = (app, db) => {
 
@@ -50,6 +51,7 @@ module.exports = (app, db) => {
                 //   .populate('positions')
                 //   .exec();
                 // await conversation(id, data, bot, type, false);
+                messenger.sendTextMessage(sender, 'HAOS');
                 console.log("HAOS")
                 res.status(200).end();
             } catch (e) {
