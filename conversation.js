@@ -15,8 +15,7 @@ module.exports = async (id, data, type) => {
             const sender = event.sender.id;
             if (event.message && event.message.text) {
                 console.log('Text: ', text);
-                await sendTextMessage(sender, ['HACKATON1: text']);
-
+                await sendTextMessage(sender, [`HACKATON1: ${text}`]);
 
             }
         }
