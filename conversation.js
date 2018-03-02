@@ -18,7 +18,7 @@ module.exports = async (id, data, type) => {
             const event = data[i];
             const sender = event.sender.id;
             console.log('IDEMOO');
-            sendTextMessage(sender, ['HACKATON']);
+            sendTextMessage(sender, 'HACKATON');
                 
         }
     } else {
