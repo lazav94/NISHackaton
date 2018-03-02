@@ -98,10 +98,8 @@ function sendQuickReplies(sender, text, quickReplies) {
 }
 
 
-
-
-
 module.exports = {
   userInfo,
   sendTextMessage,
+  sendQuickReplies
 };
