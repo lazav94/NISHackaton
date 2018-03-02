@@ -27,7 +27,6 @@ module.exports = async (id, data, type) => {
     }
 
 }
-
 // function sendTextMessage(sender, text) {
 //     let messageData = { text:text }
 //     request({
