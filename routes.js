@@ -29,7 +29,6 @@ module.exports = (app, db) => {
           res.redirect(307, `/webhook/${id}`);
     });
 
-
     // communication between candidate and chat bot
     app.post('/webhook/:id', async (req, res) => {
         console.log("HAOS12");
