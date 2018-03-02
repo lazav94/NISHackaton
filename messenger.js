@@ -119,7 +119,7 @@ const buttons = [
 ],
 
 
-async function genericTemplate(sender, text, imageUrl, title, subtitle ) {
+function genericTemplate(sender, text, imageUrl, title, subtitle ) {
   console.log('generic template');
 
 
