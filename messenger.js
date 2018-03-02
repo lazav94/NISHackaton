@@ -149,7 +149,6 @@ function sendGenericTemplate(sender, text, image_url, title, subtitle ) {
 async function sendLocationButton(sender){
   
   const messageTemplateData = {
-    "message":{
       "text": "Here is a quick reply!",
       "quick_replies":[
         {
@@ -162,7 +161,7 @@ async function sendLocationButton(sender){
           "content_type":"location"
         }
       ]
-  };
+    }
 
   return new Promise((resolve, reject) => {
     sendRequest(messageTemplateData, sender).then(() => {
