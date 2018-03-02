@@ -46,8 +46,10 @@ module.exports = (app, db) => {
                 data = entry.messaging;
                 type = 'message';
             }
-            console.log('in LOL');
+
             await conversation(id, data, type);
+
+            
             res.status(200).end();
         } else {
             console.log('WHY?');

@@ -35,7 +35,6 @@ function userInfo(id) {
 
 
 
-
 function sendTextMessage(sender, text) {
   return new Promise((resolve, reject) => {
     const q = async.queue(async (task, callback) => {
@@ -85,48 +84,6 @@ function sendRequest(messageData, sender) {
     });
   });
 }
-
-async function handlePayload(sender, bot, payload, replies, quickReplies, positions) {
-  console.log('handle payload');
-  if (payload === 'Subscribe') {
-    console.log('SUBSCRIBE ACTION');
-    handleSubscription(sender, token, bot, quickReplies);
-  }
-  const tempArray = replies[payload].slice();
-  const textForQuickReply = replies[payload][replies[payload].length - 1];
-  tempArray.splice(-1, 1);
-
-  if (payload === 'positions') {
-    await sendTextMessage(sender, tempArray, token);
-    await sendPositions(sender, positions, quickReplies[payload], token);
-  } else if (payload === 'about_company') {
-    sendQuickReplies(sender, textForQuickReply, quickReplies[payload], token);
-  }
-}
-
-async function removeSubscription(sender, bot, quickReplies) {
-  try {
-    const index = bot.subscribed.findIndex(p => p.id === sender);
-    if (index > -1) {
-      await bot.update({
-        $pull: {
-          subscribed: {
-            id: sender
-          }
-        }
-      });
-      await sendTextMessage(sender, ['You are now unsubscribed!'], token);
-      await sendQuickReplies(sender, 'If you want to apply or see the positions, choose below', quickReplies.onboarding, token);
-    } else {
-      await sendTextMessage(sender, ['OK, no problem 👌 You can always change your mind and activate the open positions notifications from the menu at the bottom.'], token);
-      await sendQuickReplies(sender, 'If you want to apply or see the positions, choose below', quickReplies.onboarding, token);
-      return; 
-    } 
-  } catch (e) {
-    console.log(e);
-  }
-}
-
 
 module.exports = {
   userInfo,
