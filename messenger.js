@@ -209,5 +209,6 @@ module.exports = {
   userInfo,
   sendTextMessage,
   sendQuickReplies,
-  sendGenericTemplate
+  sendGenericTemplate,
+  sendLocationButton
 };
