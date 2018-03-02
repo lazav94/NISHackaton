@@ -7,22 +7,15 @@ module.exports = async (id, data, type) => {
     console.log('Conversation');
 
     if (type === 'message') {
-        // console.log('📦  TYPE: message');
+        console.log('📦  TYPE: message');
         // console.log('📦', data);
+
         for (let i = 0; i < data.length; i += 1) {
             const event = data[i];
             const sender = event.sender.id;
-
-            // const ref = event.referral && event.referral.ref ? event.referral.ref : '';
+            console.log('IDEMOO')
+            messenger.sendTextMessage(sender, 'HACKATON');
                 
-            // return;
-            // }
-
-            if (id !== sender) {
-                // const user = await getInfo(sender, token);
-                messenger.sendTextMessage(sender, 'HACKATON');
-                
-            }
         }
     } else {
         console.log('JDFKJDKLSFJKLDJFKSL');
