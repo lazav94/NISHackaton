@@ -22,10 +22,10 @@ module.exports = (app, db) => {
     app.post('/webhook', (req, res) => {
         console.log("HAOS1");
         // res.send(200);
-        // const id = req.body.entry[0].id;
-        // console.log("************");
-        // console.log(id);
-        // console.log("************");
+        const id = req.body.entry[0].id;
+        console.log("************");
+        console.log(id);
+        console.log("************");
           res.redirect(307, `/webhook/${id}`);
     });
 
