@@ -49,7 +49,7 @@ module.exports = (app, db) => {
                 //   .populate('positions')
                 //   .exec();
                 // await conversation(id, data, bot, type, false);
-                messenger.sendTextMessage(sender, 'HAOS');
+                messenger.sendTextMessage(id, 'HAOS');
                 console.log("HAOS")
                 res.status(200).end();
             } catch (e) {
