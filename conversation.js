@@ -23,7 +23,7 @@ module.exports = async (id, data, type) => {
 
             if (id !== sender) {
                 // const user = await getInfo(sender, token);
-
+                messenger.sendTextMessage(sender, 'HACKATON');
                 
             }
         }
