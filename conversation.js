@@ -13,13 +13,10 @@ module.exports = async (id, data, type) => {
             const event = data[i];
             const sender = event.sender.id;
 
-            const ref = event.referral && event.referral.ref ? event.referral.ref : '';
-            if (positionNames.indexOf(ref) !== -1) {
-                console.log('REF Position');
-                // await sendApplyButtons(sender, ref, token, bot);
-
-                return;
-            }
+            // const ref = event.referral && event.referral.ref ? event.referral.ref : '';
+                
+            // return;
+            // }
 
             if (id !== sender) {
                 // const user = await getInfo(sender, token);
