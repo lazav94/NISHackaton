@@ -1,8 +1,6 @@
 require('dotenv').config();
-const FBMessenger = require('fb-messenger');
+const conversation = require('./conversation');
 
-const token = process.env.ACCESS_TOKEN;
-var messenger = new FBMessenger(token);
 
 module.exports = (app, db) => {
 
@@ -48,9 +46,7 @@ module.exports = (app, db) => {
                 // const bot = await Bot.findOne({ id })
                 //   .populate('positions')
                 //   .exec();
-                // await conversation(id, data, bot, type, false);
-                messenger.sendTextMessage(id, 'HAOS');
-                console.log("HAOS")
+                await conversation(id, data, type);
                 res.status(200).end();
             } catch (e) {
                 res.status(404).send('Bot not found!');
