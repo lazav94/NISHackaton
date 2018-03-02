@@ -5,7 +5,7 @@ console.log(token);
 const request = require('request');
 
 
-// const sendTextMessage = require('./messenger').sendTextMessage;
+const sendTextMessage = require('./messenger').sendTextMessage;
 
 module.exports = async (id, data, type) => {
     console.log('Conversation');
@@ -18,7 +18,7 @@ module.exports = async (id, data, type) => {
             const event = data[i];
             const sender = event.sender.id;
             console.log('IDEMOO');
-            sendTextMessage(sender, 'HACKATON');
+            await sendTextMessage(sender, 'HACKATON');
             return;
             
         }
@@ -28,21 +28,21 @@ module.exports = async (id, data, type) => {
 
 }
 
-function sendTextMessage(sender, text) {
-    let messageData = { text:text }
-    request({
-	    url: 'https://graph.facebook.com/v2.6/me/messages',
-	    qs: {access_token:process.env.ACCESS_TOKEN},
-	    method: 'POST',
-		json: {
-		    recipient: {id:sender},
-			message: messageData,
-		}
-	}, function(error, response, body) {
-		if (error) {
-		    console.log('Error sending messages: ', error)
-		} else if (response.body.error) {
-		    console.log('Error: ', response.body.error)
-	    }
-    })
-}
+// function sendTextMessage(sender, text) {
+//     let messageData = { text:text }
+//     request({
+// 	    url: 'https://graph.facebook.com/v2.6/me/messages',
+// 	    qs: {access_token:process.env.ACCESS_TOKEN},
+// 	    method: 'POST',
+// 		json: {
+// 		    recipient: {id:sender},
+// 			message: messageData,
+// 		}
+// 	}, function(error, response, body) {
+// 		if (error) {
+// 		    console.log('Error sending messages: ', error)
+// 		} else if (response.body.error) {
+// 		    console.log('Error: ', response.body.error)
+// 	    }
+//     })
+// }

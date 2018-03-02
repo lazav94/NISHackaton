@@ -373,7 +373,7 @@ function sendRequest(messageData, sender) {
     request({
       url,
       qs: {
-        token,
+        access_token: token,
       },
       method: 'POST',
       json: {
