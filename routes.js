@@ -26,7 +26,7 @@ module.exports = (app, db) => {
         // console.log("************");
         // console.log(id);
         // console.log("************");
-        //   res.redirect(307, `/webhook/${id}`);
+          res.redirect(307, `/webhook/${id}`);
     });
 
 
