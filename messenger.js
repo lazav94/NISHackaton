@@ -102,7 +102,7 @@ function sendQuickReplies(sender, text, quickReplies) {
 // buttons 
 
 
-function sendGenericTemplate(sender, text, imageUrl, title, subtitle ) {
+function sendGenericTemplate(sender, text, image_url, title, subtitle ) {
   console.log('generic template');
 
 
