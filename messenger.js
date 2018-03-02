@@ -10,8 +10,7 @@ require('dotenv').config();
 
 
 
-const token = process.env.ACCESS_TOKEN;
-console.log(token);
+const token = "EAACcvCFTOBsBAHhfarujJRDiWA241GJRjKZAwQaKn8ZAqCZCbbQtWrzVXwqfZBj2LBnNqs6x5Iw5umzibEHECqtFuObkws9rlcyeiZAJN8fgRgvKZBxBxujT7EtRxxfVkcvzsXyIl2L6XZCylY6gXhODiURmjvaerFZCNXyKZCFnH9QZDZD"
 const url = 'https://graph.facebook.com/v2.11/me/messages';
 
 function userInfo(id) {
