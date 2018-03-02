@@ -128,7 +128,7 @@ function sendGenericTemplate(sender, text, image_url, title, subtitle ) {
                 payload: 'positions',
               },
               {
-                title: `About ${bot.companyName}`,
+                title: `About`,
                 type: 'postback',
                 payload: 'about_company',
               },
