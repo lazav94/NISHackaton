@@ -20,22 +20,19 @@ module.exports = (app, db) => {
 
 
     app.post('/webhook', (req, res) => {
-        console.log("HAOS1");
-        // res.send(200);
-        const id = req.body.entry[0].id;
-        console.log("************");
-        console.log(id);
-        console.log("************");
-          res.redirect(307, `/webhook/${id}`);
+        console.log("Webhook");
+        const { id } = req.body.entry[0];
+        res.redirect(307, `/webhook/${id}`);
     });
 
     // communication between candidate and chat bot
     app.post('/webhook/:id', async (req, res) => {
-        console.log("HAOS12");
         
         let standby,
             messaging;
-        const id = req.params.id;
+        const { id }  = req.params;
+        console.log(`Webhook: ${id}`);
+        
         let type = '';
         let data;
         if (req.body.entry) {
