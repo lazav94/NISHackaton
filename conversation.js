@@ -15,7 +15,7 @@ module.exports = async (id, data, type) => {
                 console.log('Text: ', text);
                 await sendTextMessage(sender, [`HACKATON1: ${text}`]);
                 await sendQuickReplies(sender, 'Opa', ['1','1']);
-                await sendGenericTemplate(sender,  'text', 'http://www.romania-insider.com/wp-content/uploads/2012/07/NIS-gazprom1.jpg', 'title', 'subtitle')
+                // await sendGenericTemplate(sender,  'text', 'http://www.romania-insider.com/wp-content/uploads/2012/07/NIS-gazprom1.jpg', 'title', 'subtitle')
             }
         }
     } else {
