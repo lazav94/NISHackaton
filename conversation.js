@@ -1,6 +1,7 @@
 // const FBMessenger = require('fb-messenger');
 const token = process.env.ACCESS_TOKEN;
 // var messenger = new FBMessenger(token);
+console.log(token);
 
 const sendTextMessage = require('./messenger').sendTextMessage;
 

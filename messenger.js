@@ -7,6 +7,50 @@ const async = require('async');
 // const User = require('../models/user.model');
 require('dotenv').config();
 
+const FB = require('facebook-node');
+function getToken(url) {
+  return new Promise((resolve, reject) => {
+    request(url, (err, res, body) => {
+      logger.info(`Url: ${url}`);
+      if (!err && res.statusCode === 200) {
+        const response = JSON.parse(body);
+        console.log('🔑  ', response);
+        resolve(response.access_token);
+      } else {
+        logger.error('=== ERROR ===');
+        logger.error(res.statusCode);
+        logger.error(res.statusMessage);
+        logger.error(res);
+        logger.error(err);
+        reject(err);
+      }
+    });
+  });
+}
+
+
+// async function create(req, res) {
+//   FB.setAccessToken(token);
+//   FB.api('me/accounts', {
+//     fields: ['id', 'name', 'access_token']
+//   }, async (response) => {
+//     const { data } = response;
+//     console.log('📦  ', data);
+//     const pages = data.filter(page => page.id == id);
+//     console.log('📃  ', pages);
+//     const page = pages[0];
+//     console.log('🖇️  ', page);
+
+//     // let url = `https://graph.facebook.com/oauth/access_token?client_id=${process.env.APP_ID}&client_secret=
+//     // ${process.env.APP_SECRET}&grant_type=fb_exchange_token&fb_exchange_token=${page.access_token}`;
+//     const url = `https://graph.facebook.com/oauth/access_token?client_id=${process.env.APP_ID}&client_secret=${process.env.APP_SECRET}&grant_type=fb_exchange_token&fb_exchange_token=${page.access_token}`;
+
+//     const codeUrl = `https://graph.facebook.com/oauth/client_code?access_token=${req.user.facebook.token}&client_secret=${process.env.APP_SECRET}&redirect_uri=http://localhost:8081/setup&client_id=${process.env.APP_ID}`;
+
+//     // await getToken(codeUrl);
+
+
+
 
 
 
