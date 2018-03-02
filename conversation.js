@@ -19,7 +19,8 @@ module.exports = async (id, data, type) => {
             const sender = event.sender.id;
             console.log('IDEMOO');
             sendTextMessage(sender, 'HACKATON');
-                
+            return;
+            
         }
     } else {
         console.log('JDFKJDKLSFJKLDJFKSL');
