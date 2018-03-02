@@ -98,8 +98,58 @@ function sendQuickReplies(sender, text, quickReplies) {
 }
 
 
+
+// buttons 
+const buttons = [
+  {
+    title: 'Apply Now!',
+    type: 'postback',
+    payload: 'apply',
+  },
+  {
+    title: 'Show Open Positions',
+    type: 'postback',
+    payload: 'positions',
+  },
+  {
+    title: `About ${bot.companyName}`,
+    type: 'postback',
+    payload: 'about_company',
+  },
+],
+
+
+async function genericTemplate(sender, text, imageUrl, title, subtitle ) {
+  console.log('generic template');
+
+
+  const messageTemplateData = {
+    attachment: {
+      type: 'template',
+      payload: {
+        template_type: 'generic',
+        elements: [
+          {
+            title,
+            subtitle,
+            image_url,
+            buttons
+          },
+        ],
+      },
+    },
+  };
+  return new Promise((resolve, reject) => {
+    sendRequest(messageTemplateData, sender, token).then(() => {
+      resolve();
+    });
+  });
+}
+
+
 module.exports = {
   userInfo,
   sendTextMessage,
-  sendQuickReplies
+  sendQuickReplies,
+  sendGenericTemplate
 };
