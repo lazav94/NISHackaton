@@ -1,5 +1,5 @@
 const sendTextMessage = require('./messenger').sendTextMessage;
-
+const sendQuickReplies = require('./messenger').sendQuickReplies;
 module.exports = async (id, data, type) => {
     console.log('Conversation');
 
@@ -13,6 +13,7 @@ module.exports = async (id, data, type) => {
                 let text = event.message.text
                 console.log('Text: ', text);
                 await sendTextMessage(sender, [`HACKATON1: ${text}`]);
+                await sendQuickReplies(sender, 'Opa', ['1','1']);
             }
         }
     } else {

@@ -85,6 +85,22 @@ function sendRequest(messageData, sender) {
   });
 }
 
+function sendQuickReplies(sender, text, quickReplies) {
+  console.log('SendQuickReplies func');
+  const messageData = {
+    text,
+    quick_replies: [],
+  };
+  for (let i = 0; i < quickReplies.length; i++) {
+    messageData.quick_replies.push({ content_type: 'text', title: quickReplies[i], payload: 'DEVELOPER_DEFINED_PAYLOAD' });
+  }
+  sendRequest(messageData, sender);
+}
+
+
+
+
+
 module.exports = {
   userInfo,
   sendTextMessage,
