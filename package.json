@@ -10,9 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.6.0",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.0",
     "express": "^4.16.2",
-    "mongoose": "^5.0.7"
+    "fb-messenger": "^1.2.0",
+    "fs": "0.0.1-security",
+    "mongoose": "^5.0.7",
+    "path": "^0.12.7"
   }
 }

@@ -17,6 +17,7 @@ module.exports = (app, db) => {
 
 
     app.post('/webhook', (req, res) => {
+        console.log("HAOS1");
         res.send(200);
         // const id = req.body.entry[0].id;
         // console.log("************");
@@ -28,6 +29,8 @@ module.exports = (app, db) => {
 
     // communication between candidate and chat bot
     app.post('/webhook/:id', async (req, res) => {
+        console.log("HAOS12");
+        
         let standby,
             messaging;
         const id = req.params.id;
