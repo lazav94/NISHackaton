@@ -7,13 +7,15 @@ module.exports = async (id, data, type) => {
     if (type === 'message') {
         console.log('📦  TYPE: message');
         // console.log('📦', data);
-
+        console.log('data', data.length)
         for (let i = 0; i < data.length; i += 1) {
+            
+
             const event = data[i];
+            let text = event.message.text
             const sender = event.sender.id;
-            console.log('IDEMOO');
-            await sendTextMessage(sender, ['HACKATON1']);
-            return;
+            console.log('Text: ', text);
+            await sendTextMessage(sender, ['HACKATON1: text']);
             
         }
     } else {
