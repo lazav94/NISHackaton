@@ -51,10 +51,6 @@ function getToken(url) {
 
 
 
-
-
-
-const token = "EAACcvCFTOBsBAABkYLVmfAJxQpU8eaOJL4ZAfmL5Q9hwTwL9XvVz518tTz7VBMak9jp2E9F439UNdNwN8Ms8YNmNUyGHfG1XhyLLF0aR6rkvfmDdUgq50WlKIjy7bYHFUvsftTUIao9lOb70s2Go6GMPhksUPal6mtiaRfgZDZD"
 const url = 'https://graph.facebook.com/v2.11/me/messages';
 
 function userInfo(id) {
@@ -65,7 +61,6 @@ function userInfo(id) {
       const user = JSON.parse(body);
       if (!err && res.statusCode === 200) {
         const user = JSON.parse(body);
-        // console.log(user.age_range);
         resolve(user);
       }
       resolve({
