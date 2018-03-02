@@ -19,18 +19,22 @@ module.exports = (app, db) => {
 
     app.post('/webhook', (req, res) => {
         console.log("Webhook");
-        const { id } = req.body.entry[0];
+        const {
+            id
+        } = req.body.entry[0];
         res.redirect(307, `/webhook/${id}`);
     });
 
     // communication between candidate and chat bot
     app.post('/webhook/:id', async (req, res) => {
-        
+
         let standby,
             messaging;
-        const { id }  = req.params;
+        const {
+            id
+        } = req.params;
         console.log(`Webhook: ${id}`);
-        
+
         let type = '';
         let data;
         if (req.body.entry) {
@@ -42,16 +46,11 @@ module.exports = (app, db) => {
                 data = entry.messaging;
                 type = 'message';
             }
-            try {
-                // const bot = await Bot.findOne({ id })
-                //   .populate('positions')
-                //   .exec();
-                await conversation(id, data, type);
-                res.status(200).end();
-            } catch (e) {
-                res.status(404).send('Bot not found!');
-            }
+            console.log('in LOL');
+            await conversation(id, data, type);
+            res.status(200).end();
         } else {
+            console.log('WHY?');
             res.status(500).send('Internal server error');
         }
     });

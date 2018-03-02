@@ -4,7 +4,7 @@ var messenger = new FBMessenger(token);
 
 
 module.exports = async (id, data, type) => {
-
+    console.log('Conversation');
 
     if (type === 'message') {
         // console.log('📦  TYPE: message');
