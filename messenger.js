@@ -27,7 +27,7 @@ const QRQenerator = async (text) => {
   console.log(qr);
 
   var base64Str = qr;
-  var path = './public/images/';
+  var path = 'images/';
   var optionalObj = {
     'images': 'qr',
     'type': 'png'
@@ -36,7 +36,7 @@ const QRQenerator = async (text) => {
   base64ToImage(base64Str, path, optionalObj);
 
   var imageInfo = base64ToImage(base64Str, path, optionalObj);
-  // console.log(imageInfo)
+  console.log(imageInfo)
   return imageInfo.fileName;
 }
 
