@@ -138,7 +138,6 @@ module.exports = async (id, data, type) => {
                     payload
                 } = postback;
                 console.log(postback, payload);
-
                 if (payload === 'about') {
                     await sendQuickReplies(sender, 'Industrija nafte i gasa je energetski intezivna industrija i zato su energetska efikasnost i energetske uštede u svim poslovnim oblastima Kompanije veoma značajni za uspešno poslovanje NIS-a u celini. <3', ['Cena goriva', 'Najbliza pumpa', 'Ponude']);
                 } else if (payload.indexOf('gorivo') !== -1) {
