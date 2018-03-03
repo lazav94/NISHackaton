@@ -65,17 +65,24 @@ module.exports = (app, db) => {
         // offer.discount  
 
 
-
+      
 
 
         const token = uuidv4(); // ⇨ '416ac246-e7ac-49ff-93b4-f7e94d997e6b'
         console.log('Genereted UUID: ', token);
 
-        const json = {
-            data,
-            token,
-            date: Date.now()
-        };
+        json = {
+            id,
+            stationId,
+            name: 'Ime ponude',
+            description: 'Opis ponude',
+            prize : 200,
+            discount : '20% off',
+            data : Data.now(),
+            qr : 'https://www.qrstuff.com/images/sample.png',
+            token
+
+        }
 
         // 4) Send to java this data
         httpRequest.post(javaURL, {
