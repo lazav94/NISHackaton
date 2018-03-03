@@ -201,7 +201,7 @@ async function sendOffer(sender, offer) {
 
 
 function sendOffers(sender, offer, quick_replies) {
-  const messageData = {
+  let messageData = {
     attachment: {
       type: 'template',
       payload: {
@@ -222,7 +222,7 @@ function sendOffers(sender, offer, quick_replies) {
       buttons: [{
         title: 'Buy',
         type: 'postback',
-        payload: offer[i].name,
+        payload: offer[i].name
       }],
     });
   }
