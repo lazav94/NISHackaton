@@ -1,6 +1,6 @@
 require('dotenv').config();
 const conversation = require('./conversation');
-const request = require('request');
+const httpRequest = require('request');
 const uuidv4 = require('uuid/v4');
 
 
@@ -10,21 +10,19 @@ const javaURL = '';
 
 module.exports = (app, db) => {
 
-    // 1) When someone is near android send me ID and station id
-    app.post('/near', async (res, req) => {
+    // 1) When someone is near from mobile [Android] receive ID and ID of nearest station 
+    app.post('/near', async (req, res) => {
         try {
             console.log('Near endpoint');
 
             console.log(req.body);
-console.log(req.params);
-console.log(req.query);
             const {
                 id,
                 stationId
             } = req.body;
 
-            console.log(`ID: ${id}`);
-            console.log(`Station id: ${stationId}`);
+            // console.log(`ID: ${id}`);
+            // console.log(`Station id: ${stationId}`);
 
             const json = {
                 id,
@@ -35,7 +33,6 @@ console.log(req.query);
             httpRequest.post(pythonURL, {
                 json
             }, (err, httpResponse, body) => {
-                console.log(httpResponse.statusCode);
                 if (err) {
                     console.log(err);
                 } else {
@@ -69,7 +66,6 @@ console.log(req.query);
         httpRequest.post(javaURL, {
             json
         }, (err, httpResponse, body) => {
-            console.log(httpResponse.statusCode);
             if (err) {
                 console.log(err);
             } else {
@@ -81,14 +77,24 @@ console.log(req.query);
 
 
 
-
-
-
-
     //////////////// SEKTA
     app.get('/', (req, res) => {
+
+        httpRequest.post('http://localhost:8081/near',  {
+            json : {
+                id: '123',
+                stationId: '321'
+            }
+        }, (err, httpResponse, body) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Request successfully send');
+            }
+        });
+
         console.log('AJDE PRORADI')
-        res.send('Jenna is here!');
+        res.send('Nis is here!');
     });
 
     app.get('/webhook', (req, res) => {

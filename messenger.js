@@ -92,7 +92,11 @@ function sendQuickReplies(sender, text, quickReplies) {
     quick_replies: [],
   };
   for (let i = 0; i < quickReplies.length; i++) {
-    messageData.quick_replies.push({ content_type: 'text', title: quickReplies[i], payload: 'DEVELOPER_DEFINED_PAYLOAD' });
+    messageData.quick_replies.push({
+      content_type: 'text',
+      title: quickReplies[i],
+      payload: 'DEVELOPER_DEFINED_PAYLOAD'
+    });
   }
   sendRequest(messageData, sender);
 }
@@ -102,7 +106,7 @@ function sendQuickReplies(sender, text, quickReplies) {
 // buttons 
 
 
-function sendGenericTemplate(sender, text, image_url, title, subtitle ) {
+function sendGenericTemplate(sender, text, image_url, title, subtitle) {
   console.log('generic template');
 
 
@@ -111,30 +115,27 @@ function sendGenericTemplate(sender, text, image_url, title, subtitle ) {
       type: 'template',
       payload: {
         template_type: 'generic',
-        elements: [
-          {
-            title,
-            subtitle,
-            image_url,
-            buttons:  [
-              {
-                title: 'Apply Now!',
-                type: 'postback',
-                payload: 'apply',
-              },
-              {
-                title: 'Show Open Positions',
-                type: 'postback',
-                payload: 'positions',
-              },
-              {
-                title: `About`,
-                type: 'postback',
-                payload: 'about_company',
-              },
-            ],
-          },
-        ],
+        elements: [{
+          title,
+          subtitle,
+          image_url,
+          buttons: [{
+              title: 'See what we have',
+              type: 'postback',
+              payload: 'show',
+            },
+            {
+              title: 'Show NIS',
+              type: 'postback',
+              payload: 'show',
+            },
+            {
+              title: `About NIS`,
+              type: 'postback',
+              payload: 'about',
+            },
+          ],
+        }, ],
       },
     },
   };
@@ -146,16 +147,14 @@ function sendGenericTemplate(sender, text, image_url, title, subtitle ) {
 }
 
 
-async function sendLocationButton(sender){
-  
+async function sendLocationButton(sender) {
+
   const messageTemplateData = {
-      "text": "Here is a quick reply!",
-      "quick_replies":[
-        {
-          "content_type":"location"
-        }
-      ]
-    }
+    "text": "Here is a quick reply!",
+    "quick_replies": [{
+      "content_type": "location"
+    }]
+  }
 
   return new Promise((resolve, reject) => {
     sendRequest(messageTemplateData, sender).then(() => {
@@ -165,12 +164,8 @@ async function sendLocationButton(sender){
 
 }
 
-async function sendPositionTemplate(elements, messageData) {
+async function sendOffer(offer) {
   console.log('Get position template');
-  const sender = messageData.sender;
-  const bot = messageData.bot;
-  const token = messageData.token;
-
 
   // Get position image
   const messageTemplateData = {
@@ -178,25 +173,22 @@ async function sendPositionTemplate(elements, messageData) {
       type: 'template',
       payload: {
         template_type: 'generic',
-        elements: [
-          {
-            title: `${position.name}`,
-            subtitle: `${position.shortDescription}`,
-            image_url: ((position && position.positionImg && position.positionImg !== '') ? position.positionImg : 'https://s2.postimg.org/3y41etr6h/Artboard_2_copy.png'),
-            buttons: [
-              {
-                title: 'Apply Now!',
-                type: 'postback',
-                payload: `${position.name}_apply`,
-              },
-              {
-                title: 'Other Positions',
-                type: 'postback',
-                payload: 'positions',
-              },
-            ],
-          },
-        ],
+        elements: [{
+          title: `${offer.name}`,
+          subtitle: `${offer.shortDescription}`,
+          image_url: offer.image_url,
+          buttons: [{
+              title: 'Buy!',
+              type: 'postback',
+              payload: `${offer.name}`,
+            },
+            {
+              title: 'Other offers',
+              type: 'postback',
+              payload: 'other',
+            },
+          ],
+        }, ],
       },
     },
   };
@@ -208,6 +200,39 @@ async function sendPositionTemplate(elements, messageData) {
 }
 
 
+function sendOffers(sender, offer, quickReplies, access_token, bot, action) {
+  const messageData = {
+    attachment: {
+      type: 'template',
+      payload: {
+        template_type: 'list',
+        top_element_style: 'compact',
+        elements: [],
+      },
+    },
+    quick_replies:
+  };
+
+  for (let i = 0; i < offer.length; i++) {
+    messageData.attachment.payload.elements.push({
+      title: offer[i].name,
+      subtitle: offer[i].shortDescription,
+      image_url: offer[i].image_url,
+      buttons: [{
+        title: 'Buy',
+        type: 'postback',
+        payload: offer[i].name,
+      }],
+    });
+  }
+
+
+  return new Promise((resolve, reject) => {
+    sendRequest(messageData, sender).then(() => {
+      resolve();
+    });
+  });
+}
 
 
 
@@ -216,5 +241,7 @@ module.exports = {
   sendTextMessage,
   sendQuickReplies,
   sendGenericTemplate,
-  sendLocationButton
+  sendLocationButton,
+  sendOffers,
+  sendOffer
 };
