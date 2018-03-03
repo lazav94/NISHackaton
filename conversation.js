@@ -148,7 +148,10 @@ module.exports = async (id, data, type) => {
                     // const image_url = await QRQenerator('tekst neki');
                     // console.log('Image url' , image_url);
 
-                    await sendOffer(sender, {name : 'name', shortDescription:  "oo", image_url: 'https://lh4.googleusercontent.com/Ck_zzrZk6R-Z3w5-QdfDadOuUId_v-UFZf6K6TL8rpZj5QYjIZFpZB2ru3efJalzmgrhn0jUjVxAU_o8sTmE=w1855-h965'})
+
+                     await sendGenericTemplate(sender, 'Dobrodosli u Nis chatbot ✋', `https://lh4.googleusercontent.com/Ck_zzrZk6R-Z3w5-QdfDadOuUId_v-UFZf6K6TL8rpZj5QYjIZFpZB2ru3efJalzmgrhn0jUjVxAU_o8sTmE=w1855-h965`, `${fuel[i].name}`, `${fuel[i].shortDescription}`)
+
+                    // await sendOffer(sender, {name : 'name', shortDescription:  "oo", image_url: 'https://lh4.googleusercontent.com/Ck_zzrZk6R-Z3w5-QdfDadOuUId_v-UFZf6K6TL8rpZj5QYjIZFpZB2ru3efJalzmgrhn0jUjVxAU_o8sTmE=w1855-h965'})
                     // await sendGenericTemplate(sender, 'Dobrodosli u Nis chatbot ✋', `images/${image_url}`, `${fuel[i].name}`, `${fuel[i].shortDescription}`)
                 }
 
