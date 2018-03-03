@@ -40,11 +40,11 @@ module.exports = async (id, data, type) => {
                 }
             ];
 
-                await sendOffer(sender, {
-                    name: 'Ponuda',
-                    shortDescription: "Opis",
-                    image_url: "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"
-                });
+                // await sendOffer(sender, {
+                //     name: 'Ponuda',
+                //     shortDescription: "Opis",
+                //     image_url: "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"
+                // });
 
            
 
@@ -52,7 +52,7 @@ module.exports = async (id, data, type) => {
                 await sendOffers(
                     sender,
                     offers,
-                    ['1', '2']
+                    // ['1', '2']
                 );
 
             }

@@ -211,7 +211,7 @@ function sendOffers(sender, offer, quick_replies) {
         elements: [],
       },
     },
-    quick_replies
+    // quick_replies
   };
 
   for (let i = 0; i < offer.length; i++) {
