@@ -150,7 +150,7 @@ function sendGenericTemplate(sender, text, image_url, title, subtitle) {
 async function sendLocationButton(sender) {
 
   const messageTemplateData = {
-    "text": "Here is a quick reply!",
+    "text": "Podeli lokaciju:",
     "quick_replies": [{
       "content_type": "location"
     }]
@@ -222,7 +222,7 @@ function sendOffers(sender, offer, quick_replies) {
       buttons: [{
         title: 'Buy',
         type: 'postback',
-        payload: offer[i].name
+        payload: `${i}gorivo`
       }],
     });
   }

@@ -24,7 +24,6 @@ module.exports = async (id, data, type) => {
                 let text = event.message.text
                 console.log('Text: ', text);
 
-
                 let fuel = [{
                         name: 'G-Drive',
                         shortDescription: "Novi premijum benzin 100 oktana G-Drive 100 sadrži aktivne komponente koje omogućavaju efikasniji rad motora, poboljšavaju njegove performanse i pozitivno se odražavaju na njegovu ispravnost i dugovečnost. Proizvedeno prema najvišim tehnološkim standardima, G-Drive 100 je gorivo nove snage koje će vašem motoru pružiti profesionalnu zaštitu, a vama sigurniju i uzbudljiviju vožnju. Specijalna formula ovog goriva produžava radni vek motora i sprečava nastanak kvarova. ",
@@ -49,11 +48,12 @@ module.exports = async (id, data, type) => {
 
                 switch (count) {
                     case 0:
-                        await sendGenericTemplate(sender, 'text', 'http://www.romania-insider.com/wp-content/uploads/2012/07/NIS-gazprom1.jpg', 'title', 'subtitle')
+                        await sendGenericTemplate(sender, 'Dobrodosli u Nis chatbot ✋', 'http://www.romania-insider.com/wp-content/uploads/2012/07/NIS-gazprom1.jpg', 'title', 'subtitle')
                         count++
                         break;
                     case 1:
                         await sendLocationButton(sender);
+                        await sendTextMessage(sender, ['Dalje']);
                         count++
                         break;
                     case 2:
@@ -63,15 +63,23 @@ module.exports = async (id, data, type) => {
                     case 3:
                         if (text === 'Cena goriva') {
                             await sendOffers(sender, fuel);
+                            count = 4;
                         } else if (text === 'Najbliza pumpa') {
-
+                            await sendGenericTemplate(sender, 'text', 'https://banjalucanke.com/wp-content/uploads/2014/08/nis-petrol.jpg', 'title', 'subtitle')
+                            count = 5;
                         } else if (text === 'Ponude') {
-
+                            count = 6;
                         }
                         break;
                     case 4:
+                        break;
+                    case 5:
 
                         break;
+                    case 6:
+
+                        break;
+
 
 
                     default:
@@ -132,8 +140,15 @@ module.exports = async (id, data, type) => {
                 } = postback;
                 console.log(postback, payload);
 
-                if(payload === 'about'){
+                if (payload === 'about') {
                     await sendTextMessage(sender, ['Industrija nafte i gasa je energetski intezivna industrija i zato su energetska efikasnost i energetske uštede u svim poslovnim oblastima Kompanije veoma značajni za uspešno poslovanje NIS-a u celini. <3']);
+                } else if(payload.indexOf('gorivo') !== -1){
+                    const i = parseInt(payload[0]);
+                    console.log(i);
+                    await sendTextMessage(sender, [`Izabrali ste ${fuel[i].name}`]);
+                    await sendGenericTemplate(sender, `${fuel[i].name}`, `${fuel[i].image_url}`, `${fuel[i].shortDescription}`, `${fuel[i].name}`a );
+                    
+
                 }
 
                 console.log(await userInfo(sender));
