@@ -20,7 +20,7 @@ module.exports = async (id, data, type) => {
         for (let i = 0; i < data.length; i += 1) {
             const event = data[i];
             const sender = event.sender.id;
-            
+
             if (event.message && event.message.text) {
                 let text = event.message.text
                 console.log('Text: ', text);
@@ -47,7 +47,7 @@ module.exports = async (id, data, type) => {
                     }
                 ];
 
-                if(text ===  'restart'){
+                if (text === 'restart') {
                     count = 0;
                     return;
                 }
@@ -59,28 +59,24 @@ module.exports = async (id, data, type) => {
                         count++
                         break;
                     case 1:
-                        await sendQuickReplies(sender, ['Dalje']);
-                        count++
                         break;
                     case 2:
-                        break;
-                    case 3:
                         if (text === 'Cena goriva') {
                             await sendOffers(sender, fuel);
-                            count = 4;
+                            count = 3;
                         } else if (text === 'Najbliza pumpa') {
                             await sendGenericTemplate(sender, 'NIS Petrlo Beograd', 'https://banjalucanke.com/wp-content/uploads/2014/08/nis-petrol.jpg', 'NIS Petro Beograd', 'Udaljenost 7.4km ')
-                            count = 5;
+                            count = 4;
                         } else if (text === 'Ponude') {
-                            count = 6;
+                            count = 5;
                         }
                         break;
-                    case 4:
+                    case 3:
                         break;
-                    case 5:
+                    case 4:
 
                         break;
-                    case 6:
+                    case 5:
 
                         break;
 
@@ -146,20 +142,19 @@ module.exports = async (id, data, type) => {
 
                 if (payload === 'about') {
                     await sendTextMessage(sender, ['Industrija nafte i gasa je energetski intezivna industrija i zato su energetska efikasnost i energetske uštede u svim poslovnim oblastima Kompanije veoma značajni za uspešno poslovanje NIS-a u celini. <3']);
-                } else if(payload.indexOf('gorivo') !== -1){
+                } else if (payload.indexOf('gorivo') !== -1) {
                     const i = parseInt(payload[0]);
                     console.log(i);
                     await sendTextMessage(sender, [`Izabrali ste ${fuel[i].name}`]);
-                    await sendGenericTemplate(sender, `${fuel[i].name}`, `${fuel[i].image_url}`, `${fuel[i].shortDescription}`, `${fuel[i].name}` );
-                    
+                    await sendGenericTemplate(sender, `${fuel[i].name}`, `${fuel[i].image_url}`, `${fuel[i].shortDescription}`, `${fuel[i].name}`);
+
 
                 }
 
                 console.log(await userInfo(sender));
-            } else if(event.message && event.message.mid && event.message.attachments && event.message.seq) {
+            } else if (event.message && event.message.mid && event.message.attachments && event.message.seq) {
                 // console.log(event);
                 await sendQuickReplies(sender, 'Izaberi:', ['Cena goriva', 'Najbliza pumpa', 'Ponude']);
-
                 count++;
             }
         }
