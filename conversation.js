@@ -21,17 +21,31 @@ module.exports = async (id, data, type) => {
                 // await sendQuickReplies(sender, 'Opa', ['1','1']);
                 // await sendGenericTemplate(sender,  'text', 'http://www.romania-insider.com/wp-content/uploads/2012/07/NIS-gazprom1.jpg', 'title', 'subtitle')
                 // await sendLocationButton(sender);
-                await sendOffer(sender, {name : 'Ponuda', shortDescription : "Opis", image_url : "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"});
+                await sendOffer(sender, {
+                    name: 'Ponuda',
+                    shortDescription: "Opis",
+                    image_url: "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"
+                });
 
-                const offer = [
-                    {name : 'Ponuda', shortDescription : "Opis", image_url : "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"},
-                    {name : 'Ponuda', shortDescription : "Opis", image_url : "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"},
-                    {name : 'Ponuda', shortDescription : "Opis", image_url : "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"}
+                const offers = [{
+                        name: 'Ponuda1',
+                        shortDescription: "Opis",
+                        image_url: "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"
+                    },
+                    {
+                        name: 'Ponuda2',
+                        shortDescription: "Opis",
+                        image_url: "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"
+                    },
+                    {
+                        name: 'Ponuda3',
+                        shortDescription: "Opis",
+                        image_url: "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"
+                    }
                 ]
                 await sendOffers(
                     sender,
-                    offer,
-                    ['1','2']
+                    offers, ['1', '2']
                 );
 
             }
