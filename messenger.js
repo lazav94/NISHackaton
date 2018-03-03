@@ -260,7 +260,7 @@ function sendOffersList(sender, offer, quick_replies) {
       buttons: [{
         title: 'Buy',
         type: 'postback',
-        payload: offer[i].name
+        payload: `${i}gorivo`
       }],
     });
   }

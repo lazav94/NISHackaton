@@ -65,7 +65,7 @@ module.exports = async (id, data, type) => {
                             await sendOffers(sender, fuel);
                             count = 4;
                         } else if (text === 'Najbliza pumpa') {
-                            await sendGenericTemplate(sender, 'text', 'https://banjalucanke.com/wp-content/uploads/2014/08/nis-petrol.jpg', 'title', 'subtitle')
+                            await sendGenericTemplate(sender, 'NIS Petrlo Beograd', 'https://banjalucanke.com/wp-content/uploads/2014/08/nis-petrol.jpg', 'NIS Petro Beograd', 'Udaljenost 7.4km ')
                             count = 5;
                         } else if (text === 'Ponude') {
                             count = 6;
