@@ -4,6 +4,7 @@ const sendGenericTemplate = require('./messenger').sendGenericTemplate;
 const sendLocationButton = require('./messenger').sendLocationButton;
 const sendOffer = require('./messenger').sendOffer;
 const sendOffers = require('./messenger').sendOffers;
+const sendOffersList = require('./messenger').sendOffersList;
 
 module.exports = async (id, data, type) => {
     console.log('Conversation');
