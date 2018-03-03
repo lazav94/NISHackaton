@@ -158,8 +158,9 @@ module.exports = async (id, data, type) => {
                 }
 
                 console.log(await userInfo(sender));
-            } else {
-                console.log(event)
+            } else if(event.message.mid && event.message.attachments && event.message.seq) {
+                // console.log(event);
+                count++;
             }
         }
     } else {
