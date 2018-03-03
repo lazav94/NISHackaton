@@ -1,4 +1,15 @@
 
+
+var AWS = require('aws-sdk'),
+fs = require('fs');
+
+// AWS.config.update({ accessKeyId: '...', secretAccessKey: '...' });
+
+
+
+
+
+
 const {
     userInfo,
     sendTextMessage,
