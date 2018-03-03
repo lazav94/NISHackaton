@@ -23,7 +23,7 @@ const generateQR = async (text) => {
 }
 
 const QRQenerator = async (text) => {
-  const base64Str = await generateQR("Osvajamo prvo mesto momci!!!");
+  const base64Str = await generateQR(text);
   console.log('qr',base64Str);
 
   var path = '/images';
