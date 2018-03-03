@@ -26,9 +26,13 @@ module.exports = async (id, data, type) => {
                 const offer = [
                     {name : 'Ponuda', shortDescription : "Opis", image_url : "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"},
                     {name : 'Ponuda', shortDescription : "Opis", image_url : "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"},
-                    \{name : 'Ponuda', shortDescription : "Opis", image_url : "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"}
+                    {name : 'Ponuda', shortDescription : "Opis", image_url : "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"}
                 ]
-                await sendOffers(sender, {name : 'Ponuda', shortDescription : "Opis", image_url : "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"}, ['1','2']);
+                await sendOffers(
+                    sender,
+                    offer,
+                    ['1','2']
+                );
 
             }
         }
