@@ -28,7 +28,7 @@ const QRQenerator = async (text) => {
 
   var path = './public/images/';
   var optionalObj = {
-    'images': 'qr',
+    'images': base64Str,
     'type': 'png'
   };
 
