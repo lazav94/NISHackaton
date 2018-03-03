@@ -13,8 +13,11 @@ module.exports = (app, db) => {
     // 1) When someone is near android send me ID and station id
     app.post('/near', async (res, req) => {
         try {
+            console.log('Near endpoint');
 
             console.log(req.body);
+console.log(req.params);
+console.log(req.query);
             const {
                 id,
                 stationId
