@@ -49,10 +49,10 @@ module.exports = async (id, data, type) => {
                 switch (count) {
                     case 0:
                         await sendGenericTemplate(sender, 'Dobrodosli u Nis chatbot ✋', 'http://www.romania-insider.com/wp-content/uploads/2012/07/NIS-gazprom1.jpg', 'title', 'subtitle')
+                        await sendLocationButton(sender);
                         count++
                         break;
                     case 1:
-                        await sendLocationButton(sender);
                         await sendTextMessage(sender, ['Dalje']);
                         count++
                         break;
