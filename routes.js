@@ -26,11 +26,11 @@ module.exports = (app, db) => {
             console.log(`ID: ${id}`);
             console.log(`Station id: ${stationId}`);
 
-            const json = {
-                id,
-                stationId
-            }
-            res.json(json);
+            // const json = {
+            //     id,
+            //     stationId
+            // }
+
             // // 2) Redirect this informations to python
             // httpRequest.post('/requestoffer', {
             //     json
@@ -42,6 +42,35 @@ module.exports = (app, db) => {
             //         console.log('Request successfully send');
             //     }
             // });
+
+            const token = uuidv4(); // ⇨ '416ac246-e7ac-49ff-93b4-f7e94d997e6b'
+            console.log('Genereted UUID: ', token);
+    
+            json = [{
+                id : "123",
+                stationId : '32`',
+                name: 'Ime ponude',
+                description: 'Opis ponude',
+                prize : 200,
+                discount : '24%',
+                data : Data.now(),
+                qr : 'https://www.qrstuff.com/images/sample.png',
+                token
+    
+            }, {
+                id : "1231",
+                stationId : '321`',
+                name: 'Ime ponud1e',
+                description: 'Opis 1ponude',
+                prize : 2001,
+                discount : '20%',
+                data : Data.now(),
+                qr : 'https://www.qrstuff.com/images/sample.png',
+                token
+    
+            }]
+            res.json(json);
+    
 
             // res.sendStatus(200);
 
@@ -64,22 +93,6 @@ module.exports = (app, db) => {
         // offer.prize;    
         // offer.discount  
 
-        const token = uuidv4(); // ⇨ '416ac246-e7ac-49ff-93b4-f7e94d997e6b'
-        console.log('Genereted UUID: ', token);
-
-        json = {
-            id : "123",
-            stationId : '32`',
-            name: 'Ime ponude',
-            description: 'Opis ponude',
-            prize : 200,
-            discount : '20% off',
-            data : Data.now(),
-            qr : 'https://www.qrstuff.com/images/sample.png',
-            token
-
-        }
-        res.json(json);
 
         // 4) Send to java this data
         // httpRequest.post(javaURL, {
