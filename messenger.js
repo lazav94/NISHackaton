@@ -22,6 +22,7 @@ const generateQR = async (text) => {
   }
 }
 
+
 const QRQenerator = async (text) => {
   const base64Str = await generateQR(text);
   console.log('qr',base64Str);
