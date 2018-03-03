@@ -165,7 +165,9 @@ module.exports = async (id, data, type) => {
                     await sendLocationButton(sender);
                 }
             } else if (event.message && event.message.mid && event.message.attachments && event.message.seq) {
-                // console.log(event);
+                console.log(event);
+                console.log(event.attachments);
+                
                 location = true;
                 await sendQuickReplies(sender, 'Izaberi:', ['Cena goriva', 'Najbliza pumpa', 'Ponude']);
                 count++;
