@@ -164,9 +164,9 @@ async function sendLocationButton(sender) {
 
 }
 
-async function sendOffer(offer) {
+async function sendOffer(sender, offer) {
   console.log('Send offer');
-
+  console.log(sender)
   // Get position image
   const messageTemplateData = {
     attachment: {
