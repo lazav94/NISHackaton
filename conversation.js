@@ -48,7 +48,6 @@ module.exports = async (id, data, type) => {
 
            
 
-
                 await sendOffers(
                     sender,
                     offers,
