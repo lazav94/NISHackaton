@@ -90,9 +90,7 @@ module.exports = (app, db) => {
             }));
             console.log(`💳 Bill: ${sum}`);
             // RES.STATUS send status to loyalty card api!
-            res.json({
-                response: "💳"
-            });
+           
 
             httpRequest.post('https://www.ficinflash', {
                 json: {
@@ -106,6 +104,10 @@ module.exports = (app, db) => {
                     console.log(httpRequest);
                     console.log('Request successfully send');
                 }
+            });
+
+            res.json({
+                response: "💳"
             });
 
 
