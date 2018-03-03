@@ -150,7 +150,6 @@ module.exports = async (id, data, type) => {
 
                     // await sendOffer(sender, {name : 'name', shortDescription:  "oo", image_url: `images/${image_url}`})
                     // await sendGenericTemplate(sender, 'Dobrodosli u Nis chatbot ✋', `images/${image_url}`, `${fuel[i].name}`, `${fuel[i].shortDescription}`)
-
                 }
 
                 console.log(await userInfo(sender));
