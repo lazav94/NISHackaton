@@ -8,8 +8,6 @@ fs = require('fs');
 
 
 
-
-
 const {
     userInfo,
     sendTextMessage,

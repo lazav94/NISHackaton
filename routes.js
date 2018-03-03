@@ -83,17 +83,18 @@ module.exports = (app, db) => {
             token
 
         }
+        res.json(json);
 
         // 4) Send to java this data
-        httpRequest.post(javaURL, {
-            json
-        }, (err, httpResponse, body) => {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log('Request successfully send');
-            }
-        });
+        // httpRequest.post(javaURL, {
+        //     json
+        // }, (err, httpResponse, body) => {
+        //     if (err) {
+        //         console.log(err);
+        //     } else {
+        //         console.log('Request successfully send');
+        //     }
+        // });
 
     });
 
