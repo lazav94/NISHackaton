@@ -63,8 +63,6 @@ module.exports = async (id, data, type) => {
                         count++
                         break;
                     case 2:
-                        await sendQuickReplies(sender, 'Izaberi:', ['Cena goriva', 'Najbliza pumpa', 'Ponude']);
-                        count++
                         break;
                     case 3:
                         if (text === 'Cena goriva') {
@@ -158,8 +156,10 @@ module.exports = async (id, data, type) => {
                 }
 
                 console.log(await userInfo(sender));
-            } else if(event.message.mid && event.message.attachments && event.message.seq) {
+            } else if(event.message && event.message.mid && event.message.attachments && event.message.seq) {
                 // console.log(event);
+                await sendQuickReplies(sender, 'Izaberi:', ['Cena goriva', 'Najbliza pumpa', 'Ponude']);
+
                 count++;
             }
         }
