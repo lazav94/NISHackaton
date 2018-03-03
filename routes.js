@@ -52,7 +52,7 @@ module.exports = (app, db) => {
                 description: 'Opis ponude',
                 prize : 200,
                 discount : '24%',
-                data : Data.now(),
+                date : Data.now(),
                 qr : 'https://www.qrstuff.com/images/sample.png',
                 token
     
@@ -63,7 +63,7 @@ module.exports = (app, db) => {
                 description: 'Opis 1ponude',
                 prize : 2001,
                 discount : '20%',
-                data : Data.now(),
+                date : Data.now(),
                 qr : 'https://www.qrstuff.com/images/sample.png',
                 token
             }]
