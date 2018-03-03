@@ -1,10 +1,14 @@
-const sendTextMessage = require('./messenger').sendTextMessage;
-const sendQuickReplies = require('./messenger').sendQuickReplies;
-const sendGenericTemplate = require('./messenger').sendGenericTemplate;
-const sendLocationButton = require('./messenger').sendLocationButton;
-const sendOffer = require('./messenger').sendOffer;
-const sendOffers = require('./messenger').sendOffers;
-const sendOffersList = require('./messenger').sendOffersList;
+const {
+    userInfo,
+    sendTextMessage,
+    sendQuickReplies,
+    sendGenericTemplate,
+    sendLocationButton,
+    sendOffer,
+    sendOffers,
+    sendOffersList
+} = require('./messenger');
+
 
 module.exports = async (id, data, type) => {
     console.log('Conversation');
@@ -25,21 +29,21 @@ module.exports = async (id, data, type) => {
 
                 console.log('Sender', sender);
                 const offers = [{
-                    name: 'Ponuda1',
-                    shortDescription: "Opis",
-                    image_url: "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"
-                },
-                {
-                    name: 'Ponuda2',
-                    shortDescription: "Opis",
-                    image_url: "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"
-                },
-                {
-                    name: 'Ponuda3',
-                    shortDescription: "Opis",
-                    image_url: "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"
-                }
-            ];
+                        name: 'Ponuda1',
+                        shortDescription: "Opis",
+                        image_url: "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"
+                    },
+                    {
+                        name: 'Ponuda2',
+                        shortDescription: "Opis",
+                        image_url: "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"
+                    },
+                    {
+                        name: 'Ponuda3',
+                        shortDescription: "Opis",
+                        image_url: "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"
+                    }
+                ];
 
                 // await sendOffer(sender, {
                 //     name: 'Ponuda',
@@ -57,10 +61,23 @@ module.exports = async (id, data, type) => {
 
                 await sendOffersList(
                     sender,
-                    offers,
-                    ['1', '2']
+                    offers, ['1', '2']
                 );
 
+
+                // Logic
+                if (text === '')
+            } else if (event.postback && event.postback.payload) {
+                console.log('Postback or payload');
+                const {
+                    postback
+                } = event;
+                const {
+                    payload
+                } = postback;
+                console.log(postback, payload);
+
+                console.log(userInfo(sender));
             }
         }
     } else {
