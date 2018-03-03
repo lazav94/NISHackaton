@@ -20,6 +20,7 @@ module.exports = async (id, data, type) => {
         for (let i = 0; i < data.length; i += 1) {
             const event = data[i];
             const sender = event.sender.id;
+            
             if (event.message && event.message.text) {
                 let text = event.message.text
                 console.log('Text: ', text);
@@ -46,6 +47,7 @@ module.exports = async (id, data, type) => {
                     }
                 ];
 
+                console.log(cou)
                 switch (count) {
                     case 0:
                         await sendGenericTemplate(sender, 'Dobrodosli u Nis chatbot ✋', 'http://www.romania-insider.com/wp-content/uploads/2012/07/NIS-gazprom1.jpg', 'title', 'subtitle')
@@ -53,7 +55,7 @@ module.exports = async (id, data, type) => {
                         count++
                         break;
                     case 1:
-                        await sendTextMessage(sender, ['Dalje']);
+                        await sendQuickReplies(sender, ['Dalje']);
                         count++
                         break;
                     case 2:
@@ -152,6 +154,8 @@ module.exports = async (id, data, type) => {
                 }
 
                 console.log(await userInfo(sender));
+            } else {
+                console.log(event)
             }
         }
     } else {
