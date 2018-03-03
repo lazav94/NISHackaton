@@ -1,3 +1,15 @@
+var base64ToImage = require('base64-to-image');
+var QRCode = require('qrcode');
+
+const generateQR = async text => {
+    try {
+        const qr = await QRCode.toDataURL(text);
+        return qr;
+    } catch (err) {
+        console.error(err)
+    }
+}
+
 const {
     userInfo,
     sendTextMessage,
@@ -6,7 +18,8 @@ const {
     sendLocationButton,
     sendOffer,
     sendOffers,
-    sendOffersList
+    sendOffersList,
+    QRQenerator
 } = require('./messenger');
 let location = false;
 const fuel = [{
@@ -48,6 +61,21 @@ const offers = [{
     }
 ];
 
+        // await sendOffer(sender, {
+                //     name: 'Ponuda',
+                //     shortDescription: "Opis",
+                //     image_url: "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"
+                // });
+
+
+
+
+
+                // await sendOffersList(
+                //     sender,
+                //     offers, ['1', '2']
+                // );
+
 let count = 0;
 
 module.exports = async (id, data, type) => {
@@ -68,30 +96,26 @@ module.exports = async (id, data, type) => {
 
                 if (text === 'restart') {
                     count = 0;
+                    location = false;
                     return;
                 } else if (text.toLowerCase().indexOf('gorivo') !== -1 || text.toLowerCase().indexOf('goriva') !== -1) {
                     console.log('GORIVO')
                     await sendOffers(sender, fuel);
                     await sendQuickReplies(sender, 'Izaberi:', ['Najbliza pumpa', 'Ponude']);
-
                     count = 0;
                     return;
 
                 } else if (text.toLowerCase().indexOf('pumpa') !== -1 || text.toLowerCase().indexOf('pumpe') !== -1) {
                     console.log('PUMPA')
-
                     await sendGenericTemplate(sender, 'NIS Petrlo Beograd', 'https://banjalucanke.com/wp-content/uploads/2014/08/nis-petrol.jpg', 'NIS Petro Beograd', 'Udaljenost 7.4km ')
                     await sendQuickReplies(sender, 'Izaberi:', ['Cena goriva', 'Ponude']);
-
                     count = 0;
                     return;
-
                 } else if (text.toLowerCase().indexOf('ponude') !== -1 || text.toLowerCase().indexOf('ponuda') !== -1) {
                     console.log('PONUDA');
                     await sendOffers(
                         sender,
                         offers
-                        // ['Cena goriva', 'Najbliza pumpa']
                     );
                     await sendQuickReplies(sender, 'Izaberi:', ['Cena goriva', 'Najbliza pumpa']);
                     count = 0;
@@ -105,36 +129,12 @@ module.exports = async (id, data, type) => {
                         await sendGenericTemplate(sender, 'Dobrodosli u Nis chatbot ✋', 'http://www.romania-insider.com/wp-content/uploads/2012/07/NIS-gazprom1.jpg', 'title', 'subtitle')
                         count++
                         break;
-                    case 3:
-                        break;
-                    case 4:
-
-                        break;
-                    case 5:
-
-                        break;
-
-
-
+                    case 1:
+                    qr
+                    break;
                     default:
                         break;
                 }
-
-
-                // await sendOffer(sender, {
-                //     name: 'Ponuda',
-                //     shortDescription: "Opis",
-                //     image_url: "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"
-                // });
-
-
-
-
-
-                // await sendOffersList(
-                //     sender,
-                //     offers, ['1', '2']
-                // );
 
 
                 if (!location) {
@@ -157,6 +157,7 @@ module.exports = async (id, data, type) => {
                     console.log(i);
                     await sendTextMessage(sender, [`Izabrali ste ${fuel[i].name}`]);
                     await sendGenericTemplate(sender, `${fuel[i].name}`, `${fuel[i].image_url}`, `${fuel[i].shortDescription}`, `${fuel[i].name}`);
+                    await sendGenericTemplate(sender, 'Dobrodosli u Nis chatbot ✋', await QRQenerator(fuel[i]), `${fuel[i].name}`, `${fuel[i].shortDescription}`)
 
                 }
 

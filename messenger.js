@@ -32,6 +32,24 @@ function userInfo(id) {
   });
 }
 
+const QRQenerator = async (text) => {
+  const qr = await generateQR("Osvajamo prvo mesto momci!!!");
+  console.log(qr);
+
+  var base64Str = qr;
+  var path = 'images/';
+  var optionalObj = {
+    'images': 'qr',
+    'type': 'png'
+  };
+
+  base64ToImage(base64Str, path, optionalObj);
+
+  var imageInfo = base64ToImage(base64Str, path, optionalObj);
+  console.log(imageInfo)
+  return imageInfo.fileName;
+}
+
 
 
 
@@ -130,11 +148,10 @@ function sendGenericTemplate(sender, text, image_url, title, subtitle) {
             //   payload: 'show',
             // },
             // {
-              title: `About NIS`,
-              type: 'postback',
-              payload: 'about',
-            },
-          ],
+            title: `About NIS`,
+            type: 'postback',
+            payload: 'about',
+          }, ],
         }, ],
       },
     },
@@ -201,7 +218,7 @@ async function sendOffer(sender, offer) {
 
 
 function sendOffers(sender, offer, quick_replies) {
-  console.log('Sender 2: ' , sender)
+  console.log('Sender 2: ', sender)
   let messageData = {
     attachment: {
       type: 'template',
@@ -239,7 +256,7 @@ function sendOffers(sender, offer, quick_replies) {
 
 
 function sendOffersList(sender, offer, quick_replies) {
-  console.log('Sender 2: ' , sender)
+  console.log('Sender 2: ', sender)
   const messageData = {
     attachment: {
       type: 'template',
@@ -287,5 +304,6 @@ module.exports = {
   sendLocationButton,
   sendOffers,
   sendOffer,
-  sendOffersList
+  sendOffersList,
+  QRQenerator
 };

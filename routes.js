@@ -2,18 +2,6 @@ require('dotenv').config();
 const conversation = require('./conversation');
 const httpRequest = require('request');
 const uuidv4 = require('uuid/v4');
-var base64ToImage = require('base64-to-image');
-var QRCode = require('qrcode');
-
-const generateQR = async text => {
-    try {
-        const qr = await QRCode.toDataURL(text);
-        return qr;
-    } catch (err) {
-        console.error(err)
-    }
-}
-
 
 
 
@@ -106,27 +94,11 @@ module.exports = (app, db) => {
 
 
 
+
     //////////////// SEKTA
     app.get('/', async (req, res) => {
         console.log('/');
-        const qr = await generateQR("Osvajamo prvo mesto momci!!!");
-        console.log(qr);
-
-        var base64Str = qr;
-        var path = 'images/';
-        var optionalObj = {
-            'images': 'qr',
-            'type': 'png'
-        };
-
-        base64ToImage(base64Str, path, optionalObj);
-
-        var imageInfo = base64ToImage(base64Str, path, optionalObj);
-console.log(imageInfo)
-
-        res.render('index.ejs', {
-            qr
-        });
+        res.render('index.ejs', {});
         // res.send('Nis is here!');
     });
 
