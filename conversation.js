@@ -1,14 +1,3 @@
-var base64ToImage = require('base64-to-image');
-var QRCode = require('qrcode');
-
-const generateQR = async (text) => {
-    try {
-        const qr = await QRCode.toDataURL(text);
-        return qr;
-    } catch (err) {
-        console.error(err)
-    }
-}
 
 const {
     userInfo,

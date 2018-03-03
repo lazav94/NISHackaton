@@ -9,6 +9,11 @@ require('dotenv').config();
 const url = 'https://graph.facebook.com/v2.11/me/messages';
 const token = process.env.ACCESS_TOKEN;
 
+var base64ToImage = require('base64-to-image');
+var QRCode = require('qrcode');
+
+
+
 
 const generateQR = async (text) => {
   try {
