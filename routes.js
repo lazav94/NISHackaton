@@ -88,9 +88,27 @@ module.exports = (app, db) => {
             await Promise.all(req.body.orders.map(order => {
                 sum += (order.prize - order.prize * order.discount);
             }));
-            console.log(`💳 The cost of all orders ${sum}`);
+            console.log(`💳 Bill: ${sum}`);
             // RES.STATUS send status to loyalty card api!
-            res.json({ response : "💳"});
+            res.json({
+                response: "💳"
+            });
+
+            httpRequest.post('https://www.ficinflash', {
+                json: {
+                    orders: req.body.orders,
+                    sum
+                }
+            }, (err, httpResponse, body) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log(httpRequest);
+                    console.log('Request successfully send');
+                }
+            });
+
+
         } catch (error) {
             console.log(error);
         }
