@@ -4,7 +4,6 @@ const httpRequest = require('request');
 const uuidv4 = require('uuid/v4');
 
 
-
 const pythonURL = '';
 const javaURL = '';
 
@@ -21,9 +20,8 @@ module.exports = (app, db) => {
                 stationId
             } = req.body;
 
-            
-            // console.log(`ID: ${id}`);
-            // console.log(`Station id: ${stationId}`);
+            console.log(`ID: ${id}`);
+            console.log(`Station id: ${stationId}`);
 
             const json = {
                 id,
@@ -74,6 +72,11 @@ module.exports = (app, db) => {
             }
         });
 
+    });
+
+    app.get('/offer', async (req, res) => {
+        console.log('DFKLSJKLF')
+        res.sendStatus(200)
     });
 
 
