@@ -129,7 +129,7 @@ function sendGenericTemplate(sender, text, image_url, title, subtitle) {
             //   type: 'postback',
             //   payload: 'show',
             // },
-            {
+            // {
               title: `About NIS`,
               type: 'postback',
               payload: 'about',
