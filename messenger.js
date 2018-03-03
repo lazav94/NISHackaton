@@ -19,7 +19,7 @@ const QRQenerator = async (text) => {
 
   var path = './images/';
   var optionalObj = {
-    'type':'png'
+    'type': 'png'
   };
 
   var imageInfo = await base64ToImage(base64Str, path, optionalObj);
@@ -55,7 +55,18 @@ function userInfo(id) {
 
 
 
-
+function sendImage(sender, url) {
+  const messageData = {
+    attachment: {
+      type: "image",
+      payload: {
+        url,
+        is_reusable: true
+      }
+    }
+  };
+  sendRequest(messageData, sender);
+}
 
 function sendTextMessage(sender, text) {
   return new Promise((resolve, reject) => {
@@ -309,5 +320,6 @@ module.exports = {
   sendOffers,
   sendOffer,
   sendOffersList,
-  QRQenerator
+  QRQenerator,
+  sendImage
 };
