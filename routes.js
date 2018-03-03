@@ -30,20 +30,20 @@ module.exports = (app, db) => {
                 id,
                 stationId
             }
+            res.json(json);
+            // // 2) Redirect this informations to python
+            // httpRequest.post('/requestoffer', {
+            //     json
+            // }, (err, httpResponse, body) => {
+            //     if (err) {
+            //         console.log(err);
+            //     } else {
+            //         console.log(httpRequest);
+            //         console.log('Request successfully send');
+            //     }
+            // });
 
-            // 2) Redirect this informations to python
-            httpRequest.post('/requestoffer', {
-                json
-            }, (err, httpResponse, body) => {
-                if (err) {
-                    console.log(err);
-                } else {
-                    console.log(httpRequest);
-                    console.log('Request successfully send');
-                }
-            });
-
-            res.sendStatus(200);
+            // res.sendStatus(200);
 
         } catch (error) {
             console.log('Near error:', error);
