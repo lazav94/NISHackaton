@@ -18,6 +18,7 @@
     "express": "^4.16.2",
     "facebook-node": "0.0.3",
     "fb-messenger": "^1.2.0",
+    "firebase": "^4.10.1",
     "fs": "0.0.1-security",
     "mongoose": "^5.0.7",
     "path": "^0.12.7",

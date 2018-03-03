@@ -3,7 +3,7 @@ const conversation = require('./conversation');
 const httpRequest = require('request');
 const uuidv4 = require('uuid/v4');
 var base64ToImage = require('base64-to-image');
-var QRCode = require('qrcode')
+var QRCode = require('qrcode');
 
 const generateQR = async text => {
     try {
@@ -109,7 +109,7 @@ module.exports = (app, db) => {
     //////////////// SEKTA
     app.get('/', async (req, res) => {
         console.log('/');
-        const qr = await generateQR("I'm lazar");
+        const qr = await generateQR("Osvajamo prvo mesto momci!!!");
         console.log(qr);
 
         var base64Str = qr;
