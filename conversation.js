@@ -150,7 +150,7 @@ module.exports = async (id, data, type) => {
                     // console.log('Image url' , image_url);
 
 
-                    await sendImage(sender, 'https://lh4.googleusercontent.com/Ck_zzrZk6R-Z3w5-QdfDadOuUId_v-UFZf6K6TL8rpZj5QYjIZFpZB2ru3efJalzmgrhn0jUjVxAU_o8sTmE=w1855-h965')
+                    await sendImage(sender, 'https://smallbiztrends.com/wp-content/uploads/2015/05/qr-code-sample.jpg')
                     //  await sendGenericTemplate(sender, 'Dobrodosli u Nis chatbot ✋', `https://lh4.googleusercontent.com/Ck_zzrZk6R-Z3w5-QdfDadOuUId_v-UFZf6K6TL8rpZj5QYjIZFpZB2ru3efJalzmgrhn0jUjVxAU_o8sTmE=w1855-h965`, `${fuel[i].name}`, `${fuel[i].shortDescription}`)
 
                     // await sendOffer(sender, {name : 'name', shortDescription:  "oo", image_url: 'https://lh4.googleusercontent.com/Ck_zzrZk6R-Z3w5-QdfDadOuUId_v-UFZf6K6TL8rpZj5QYjIZFpZB2ru3efJalzmgrhn0jUjVxAU_o8sTmE=w1855-h965'})
