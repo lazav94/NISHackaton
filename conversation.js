@@ -128,7 +128,9 @@ module.exports = async (id, data, type) => {
                 // );
 
 
-                // Logic
+                if(!location){
+                    await sendLocationButton(sender);
+                }
             } else if (event.postback && event.postback.payload) {
                 console.log('Postback or payload');
                 const {
@@ -150,6 +152,9 @@ module.exports = async (id, data, type) => {
                 }
 
                 console.log(await userInfo(sender));
+                if(!location){
+                    await sendLocationButton(sender);
+                }
             } else if (event.message && event.message.mid && event.message.attachments && event.message.seq) {
                 // console.log(event);
                 location = true;
@@ -157,9 +162,7 @@ module.exports = async (id, data, type) => {
                 count++;
             }
 
-            if(!location){
-                await sendLocationButton(sender);
-            }
+           
         }
     } else {
         console.log('Not type message');
