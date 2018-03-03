@@ -10,6 +10,15 @@ const url = 'https://graph.facebook.com/v2.11/me/messages';
 const token = process.env.ACCESS_TOKEN;
 
 
+const generateQR = async (text) => {
+  try {
+      const qr = await QRCode.toDataURL(text);
+      return qr;
+  } catch (err) {
+      console.error(err)
+  }
+}
+
 function userInfo(id) {
   const url = `https://graph.facebook.com/${id}?fields=first_name,last_name,age_range,gender,profile_pic&token=${token}`;
   return new Promise((resolve, reject) => {
