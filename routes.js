@@ -30,12 +30,13 @@ module.exports = (app, db) => {
             }
 
             // 2) Redirect this informations to python
-            httpRequest.post(pythonURL, {
+            httpRequest.post('/requestoffer', {
                 json
             }, (err, httpResponse, body) => {
                 if (err) {
                     console.log(err);
                 } else {
+                    console.log(httpRequest);
                     console.log('Request successfully send');
                 }
             });
