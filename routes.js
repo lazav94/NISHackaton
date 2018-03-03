@@ -79,21 +79,7 @@ module.exports = (app, db) => {
 
     //////////////// SEKTA
     app.get('/', (req, res) => {
-
-        httpRequest.post('http://localhost:8081/near',  {
-            json : {
-                id: '123',
-                stationId: '321'
-            }
-        }, (err, httpResponse, body) => {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log('Request successfully send');
-            }
-        });
-
-        console.log('AJDE PRORADI')
+        console.log('/')
         res.send('Nis is here!');
     });
 
