@@ -145,10 +145,10 @@ module.exports = async (id, data, type) => {
                     console.log(i);
                     await sendTextMessage(sender, [`Izabrali ste ${fuel[i].name}`]);
                     await sendGenericTemplate(sender, `${fuel[i].name}`, `${fuel[i].image_url}`, `${fuel[i].shortDescription}`, `${fuel[i].name}`);
-                    const image_url = await QRQenerator('tekst neki');
+                    // const image_url = await QRQenerator('tekst neki');
                     console.log('Image url' , image_url);
 
-                    await sendOffer(sender, {name : 'name', shortDescription:  "oo", image_url: `images/img-1520083697404.png`})
+                    await sendOffer(sender, {name : 'name', shortDescription:  "oo", image_url: `/images/img-1520083697404.png`})
                     // await sendGenericTemplate(sender, 'Dobrodosli u Nis chatbot ✋', `images/${image_url}`, `${fuel[i].name}`, `${fuel[i].shortDescription}`)
                 }
 
