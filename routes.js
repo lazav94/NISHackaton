@@ -47,8 +47,8 @@ module.exports = (app, db) => {
             console.log('Genereted UUID: ', token);
     
             json = [{
-                id : "123",
-                stationId : '32`',
+                id, 
+                stationId,
                 name: 'Ime ponude',
                 description: 'Opis ponude',
                 prize : 200,
@@ -67,7 +67,6 @@ module.exports = (app, db) => {
                 data : Data.now(),
                 qr : 'https://www.qrstuff.com/images/sample.png',
                 token
-    
             }]
             res.json(json);
     
