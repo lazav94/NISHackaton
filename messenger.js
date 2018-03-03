@@ -200,7 +200,7 @@ async function sendOffer(sender, offer) {
 }
 
 
-function sendOffers(sender, offer, quickReplies, access_token, bot, action) {
+function sendOffers(sender, offer, quickReplies) {
   const messageData = {
     attachment: {
       type: 'template',

@@ -22,7 +22,15 @@ module.exports = async (id, data, type) => {
                 // await sendGenericTemplate(sender,  'text', 'http://www.romania-insider.com/wp-content/uploads/2012/07/NIS-gazprom1.jpg', 'title', 'subtitle')
                 // await sendLocationButton(sender);
                 await sendOffer(sender, {name : 'Ponuda', shortDescription : "Opis", image_url : "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"});
-          }
+
+                const offer = [
+                    {name : 'Ponuda', shortDescription : "Opis", image_url : "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"},
+                    {name : 'Ponuda', shortDescription : "Opis", image_url : "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"},
+                    \{name : 'Ponuda', shortDescription : "Opis", image_url : "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"}
+                ]
+                await sendOffers(sender, {name : 'Ponuda', shortDescription : "Opis", image_url : "https://gordanladdskitchen.com/wp-content/uploads/2017/06/best-latte-machine.jpeg"}, ['1','2']);
+
+            }
         }
     } else {
         console.log('Not type message');
