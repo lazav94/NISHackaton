@@ -46,30 +46,31 @@ module.exports = (app, db) => {
             const token = uuidv4(); // ⇨ '416ac246-e7ac-49ff-93b4-f7e94d997e6b'
             console.log('Genereted UUID: ', token);
             json = [{
-                id, 
-                stationId,
-                name: 'Ime ponude',
-                description: 'Opis ponude',
-                prize : 200,
-                discount : '24%',
-                date : Date.now(),
-                qr : 'https://www.qrstuff.com/images/sample.png',
-                token
-    
-            }, 
-            {
-                id : "1231",
-                stationId : '321`',
-                name: 'Ime ponud1e',
-                description: 'Opis 1ponude',
-                prize : 2001,
-                discount : '20%',
-                date : Date.now(),
-                qr : 'https://www.qrstuff.com/images/sample.png',
-                token
-            }]
+                    id,
+                    stationId,
+                    name: 'Ime ponude',
+                    description: 'Opis ponude',
+                    prize: 200,
+                    discount: '24%',
+                    date: Date.now(),
+                    qr: 'https://www.qrstuff.com/images/sample.png',
+                    token
+
+                },
+                {
+                    id: "1231",
+                    stationId: '321`',
+                    name: 'Ime ponud1e',
+                    description: 'Opis 1ponude',
+                    prize: 2001,
+                    discount: '20%',
+                    date: Date.now(),
+                    qr: 'https://www.qrstuff.com/images/sample.png',
+                    token
+                }
+            ]
             res.json(json);
-    
+
 
             // res.sendStatus(200);
 
@@ -77,6 +78,24 @@ module.exports = (app, db) => {
             console.log('Near error:', error);
         }
     });
+
+
+    app.post('/order', async (req, res) => {
+        console.log(req.body);
+        try {
+
+            let sum = 0;
+            await Promise.all(req.body.orders.map(order => {
+                sum += (order.prize - order.prize * order.discount);
+            }));
+            console.log(`💳 The cost of all orders ${sum}`);
+            // RES.STATUS send status to loyalty card api!
+            res.json({ response : "💳"});
+        } catch (error) {
+            console.log(error);
+        }
+    });
+
 
     // 3) Endpoint where I get offer and all data from DB
     app.post('/offer', async (req, res) => {
