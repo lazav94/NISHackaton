@@ -238,6 +238,46 @@ function sendOffers(sender, offer, quick_replies) {
 }
 
 
+function sendOffersList(sender, offer, quick_replies) {
+  console.log('Sender 2: ' , sender)
+  const messageData = {
+    attachment: {
+      type: 'template',
+      payload: {
+        template_type: 'generic',
+        // top_element_style: 'compact',
+        elements: [],
+      },
+    },
+    // ,quick_replies: []
+  };
+
+  for (let i = 0; i < offer.length; i++) {
+    messageData.attachment.payload.elements.push({
+      title: offer[i].name,
+      subtitle: offer[i].shortDescription,
+      image_url: offer[i].image_url,
+      buttons: [{
+        title: 'Buy',
+        type: 'postback',
+        payload: offer[i].name
+      }],
+    });
+  }
+
+  console.log(messageData);
+
+
+  return new Promise((resolve, reject) => {
+    sendRequest(messageData, sender).then(() => {
+      resolve();
+    });
+  });
+}
+
+
+
+
 
 module.exports = {
   userInfo,
@@ -246,5 +286,6 @@ module.exports = {
   sendGenericTemplate,
   sendLocationButton,
   sendOffers,
-  sendOffer
+  sendOffer,
+  sendOffersList
 };

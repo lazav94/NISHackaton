@@ -47,10 +47,17 @@ module.exports = async (id, data, type) => {
                 // });
 
 
-                await sendOffers(
+                // await sendOffers(
+                //     sender,
+                //     offers,
+                //     // ['1', '2']
+                // );
+
+
+                await sendOffersList(
                     sender,
                     offers,
-                    // ['1', '2']
+                    ['1', '2']
                 );
 
             }
