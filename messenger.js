@@ -13,8 +13,6 @@ var base64ToImage = require('base64-to-image');
 var QRCode = require('qrcode');
 
 
-
-
 const generateQR = async (text) => {
   try {
       const qr = await QRCode.toDataURL(text);
@@ -22,6 +20,24 @@ const generateQR = async (text) => {
   } catch (err) {
       console.error(err)
   }
+}
+
+const QRQenerator = async (text) => {
+  const qr = await generateQR("Osvajamo prvo mesto momci!!!");
+  console.log(qr);
+
+  var base64Str = qr;
+  var path = 'images/';
+  var optionalObj = {
+    'images': 'qr',
+    'type': 'png'
+  };
+
+  base64ToImage(base64Str, path, optionalObj);
+
+  var imageInfo = base64ToImage(base64Str, path, optionalObj);
+  // console.log(imageInfo)
+  return imageInfo.fileName;
 }
 
 function userInfo(id) {
@@ -46,23 +62,7 @@ function userInfo(id) {
   });
 }
 
-const QRQenerator = async (text) => {
-  const qr = await generateQR("Osvajamo prvo mesto momci!!!");
-  console.log(qr);
 
-  var base64Str = qr;
-  var path = 'images/';
-  var optionalObj = {
-    'images': 'qr',
-    'type': 'png'
-  };
-
-  base64ToImage(base64Str, path, optionalObj);
-
-  var imageInfo = base64ToImage(base64Str, path, optionalObj);
-  console.log(imageInfo)
-  return imageInfo.fileName;
-}
 
 
 
