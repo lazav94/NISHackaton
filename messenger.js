@@ -165,7 +165,7 @@ async function sendLocationButton(sender) {
 }
 
 async function sendOffer(offer) {
-  console.log('Get position template');
+  console.log('Send offer');
 
   // Get position image
   const messageTemplateData = {
@@ -210,7 +210,7 @@ function sendOffers(sender, offer, quickReplies, access_token, bot, action) {
         elements: [],
       },
     },
-    quick_replies:
+    quick_replies
   };
 
   for (let i = 0; i < offer.length; i++) {
