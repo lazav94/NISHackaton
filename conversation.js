@@ -55,16 +55,20 @@ module.exports = async (id, data, type) => {
                 } else if (text.toLowerCase().indexOf('gorivo') !== -1 || text.toLowerCase().indexOf('goriva') !== -1 ){
                     console.log('GORIVO')
                     await sendOffers(sender, fuel);
-                    count = 3;
+                    await sendQuickReplies(sender, 'Izaberi:', ['Najbliza pumpa', 'Ponude']);
+
+                    count = 0;
                 } else if(text.toLowerCase().indexOf('pumpa') !== -1 || text.toLowerCase().indexOf('pumpe') !== -1 ){
                     console.log('PUMPA')
                     
                     await sendGenericTemplate(sender, 'NIS Petrlo Beograd', 'https://banjalucanke.com/wp-content/uploads/2014/08/nis-petrol.jpg', 'NIS Petro Beograd', 'Udaljenost 7.4km ')
-                    count = 4;
+                    await sendQuickReplies(sender, 'Izaberi:', ['Cena goriva', 'Ponude']);
+
+                    count = 0;
                 } else if(text.toLowerCase().indexOf('ponude') !== -1 || text.toLowerCase().indexOf('ponuda') !== -1 ){
                     console.log('PONUDA')
-                    
-                    count = 5;
+                    await sendQuickReplies(sender, 'Izaberi:', ['Cena goriva', 'Najbliza pumpa']);
+                    count = 0;
                 }
 
 
