@@ -76,7 +76,6 @@ module.exports = async (id, data, type) => {
                 switch (count) {
                     case 0:
                         await sendGenericTemplate(sender, 'Dobrodosli u Nis chatbot ✋', 'http://www.romania-insider.com/wp-content/uploads/2012/07/NIS-gazprom1.jpg', 'title', 'subtitle')
-                        await sendLocationButton(sender);
                         count++
                         break;
                     case 3:
@@ -166,7 +165,7 @@ module.exports = async (id, data, type) => {
                 }
             } else if (event.message && event.message.mid && event.message.attachments && event.message.seq) {
                 console.log(event);
-                console.log(event.attachments);
+                console.log(event.message.attachments);
                 
                 location = true;
                 await sendQuickReplies(sender, 'Izaberi:', ['Cena goriva', 'Najbliza pumpa', 'Ponude']);
