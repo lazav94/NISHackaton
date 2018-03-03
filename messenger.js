@@ -13,19 +13,9 @@ var base64ToImage = require('base64-to-image');
 var QRCode = require('qrcode');
 
 
-const generateQR = async (text) => {
-  try {
-      const qr = await QRCode.toDataURL(text);
-      return qr;
-  } catch (err) {
-      console.error(err)
-  }
-}
-
-
 const QRQenerator = async (text) => {
-  const base64Str = await generateQR(text);
-  console.log('qr',base64Str);
+  const base64Str = await QRCode.toDataURL(text);
+  console.log('qr', base64Str);
 
   var path = './images/';
   var optionalObj = {
@@ -36,6 +26,9 @@ const QRQenerator = async (text) => {
   console.log(imageInfo)
   return imageInfo.fileName;
 }
+
+
+
 
 function userInfo(id) {
   const url = `https://graph.facebook.com/${id}?fields=first_name,last_name,age_range,gender,profile_pic&token=${token}`;
