@@ -47,7 +47,12 @@ module.exports = async (id, data, type) => {
                     }
                 ];
 
-                console.log(cou)
+                if(text ===  'restart'){
+                    count = 0;
+                    return;
+                }
+                console.log(count);
+
                 switch (count) {
                     case 0:
                         await sendGenericTemplate(sender, 'Dobrodosli u Nis chatbot ✋', 'http://www.romania-insider.com/wp-content/uploads/2012/07/NIS-gazprom1.jpg', 'title', 'subtitle')
