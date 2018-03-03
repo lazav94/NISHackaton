@@ -75,6 +75,8 @@ module.exports = async (id, data, type) => {
                     await sendQuickReplies(sender, 'Izaberi:', ['Najbliza pumpa', 'Ponude']);
 
                     count = 0;
+                    return;
+
                 } else if (text.toLowerCase().indexOf('pumpa') !== -1 || text.toLowerCase().indexOf('pumpe') !== -1) {
                     console.log('PUMPA')
 
@@ -82,14 +84,18 @@ module.exports = async (id, data, type) => {
                     await sendQuickReplies(sender, 'Izaberi:', ['Cena goriva', 'Ponude']);
 
                     count = 0;
+                    return;
+
                 } else if (text.toLowerCase().indexOf('ponude') !== -1 || text.toLowerCase().indexOf('ponuda') !== -1) {
                     console.log('PONUDA');
                     await sendOffers(
                         sender,
-                        offers, ['Cena goriva', 'Najbliza pumpa']
+                        offers,
+                        ['Cena goriva', 'Najbliza pumpa']
                     );
                     // await sendQuickReplies(sender, 'Izaberi:', ['Cena goriva', 'Najbliza pumpa']);
                     count = 0;
+                    return;
                 }
 
 
