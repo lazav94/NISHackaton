@@ -2,6 +2,19 @@ require('dotenv').config();
 const conversation = require('./conversation');
 const httpRequest = require('request');
 const uuidv4 = require('uuid/v4');
+var base64ToImage = require('base64-to-image');
+var QRCode = require('qrcode')
+
+const generateQR = async text => {
+    try {
+        const qr = await QRCode.toDataURL(text);
+        return qr;
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+
 
 
 const pythonURL = '';
@@ -49,12 +62,24 @@ module.exports = (app, db) => {
     // 3) Endpoint where I get offer and all data from DB
     app.post('/offer', async (req, res) => {
         const {
-            data
+            offer
         } = req.body;
+
+        // id
+        // stationId
+        // offer.name;
+        // offer.description; 
+        // offer.image_url;  
+        // offer.prize;    
+        // offer.discount  
+
+
+
+
 
         const token = uuidv4(); // ⇨ '416ac246-e7ac-49ff-93b4-f7e94d997e6b'
         console.log('Genereted UUID: ', token);
-        
+
         const json = {
             data,
             token,
@@ -82,9 +107,27 @@ module.exports = (app, db) => {
 
 
     //////////////// SEKTA
-    app.get('/', (req, res) => {
-        console.log('/')
-        res.send('Nis is here!');
+    app.get('/', async (req, res) => {
+        console.log('/');
+        const qr = await generateQR("I'm lazar");
+        console.log(qr);
+
+        var base64Str = qr;
+        var path = 'images/';
+        var optionalObj = {
+            'images': 'qr',
+            'type': 'png'
+        };
+
+        base64ToImage(base64Str, path, optionalObj);
+
+        var imageInfo = base64ToImage(base64Str, path, optionalObj);
+console.log(imageInfo)
+
+        res.render('index.ejs', {
+            qr
+        });
+        // res.send('Nis is here!');
     });
 
     app.get('/webhook', (req, res) => {

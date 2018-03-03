@@ -4,10 +4,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
+const path = require('path');
+
 
 
 app.set('port', (process.env.PORT || 5000));
 
+app.set('view engine', 'ejs');
+app.set('/views', path.join(__dirname, 'views'));
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json({
     limit: '50mb'
