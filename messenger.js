@@ -26,7 +26,7 @@ const QRQenerator = async (text) => {
   const base64Str = await generateQR("Osvajamo prvo mesto momci!!!");
   console.log('qr',base64Str);
 
-  var path = './public/images/';
+  var path = '/images';
   var optionalObj = {
     'fileName': 'qr', 'type':'png'
   };
