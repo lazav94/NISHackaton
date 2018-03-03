@@ -200,7 +200,7 @@ async function sendOffer(sender, offer) {
 }
 
 
-function sendOffers(sender, offer, quickReplies) {
+function sendOffers(sender, offer, quick_replies) {
   const messageData = {
     attachment: {
       type: 'template',
