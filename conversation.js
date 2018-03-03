@@ -76,7 +76,7 @@ module.exports = async (id, data, type) => {
                 } = postback;
                 console.log(postback, payload);
 
-                console.log(userInfo(sender));
+                console.log(await userInfo(sender));
             }
         }
     } else {
