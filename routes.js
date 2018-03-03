@@ -45,7 +45,6 @@ module.exports = (app, db) => {
 
             const token = uuidv4(); // ⇨ '416ac246-e7ac-49ff-93b4-f7e94d997e6b'
             console.log('Genereted UUID: ', token);
-    
             json = [{
                 id, 
                 stationId,
