@@ -90,10 +90,10 @@ module.exports = async (id, data, type) => {
                     console.log('PONUDA');
                     await sendOffers(
                         sender,
-                        offers,
-                        ['Cena goriva', 'Najbliza pumpa']
+                        offers
+                        // ['Cena goriva', 'Najbliza pumpa']
                     );
-                    // await sendQuickReplies(sender, 'Izaberi:', ['Cena goriva', 'Najbliza pumpa']);
+                    await sendQuickReplies(sender, 'Izaberi:', ['Cena goriva', 'Najbliza pumpa']);
                     count = 0;
                     return;
                 }
