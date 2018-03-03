@@ -73,7 +73,7 @@ module.exports = async (id, data, type) => {
                 } = event;
                 const {
                     payload
-                } = postback;
+                } = postback;\
                 console.log(postback, payload);
 
                 console.log(await userInfo(sender));

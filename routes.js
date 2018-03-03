@@ -21,6 +21,7 @@ module.exports = (app, db) => {
                 stationId
             } = req.body;
 
+            
             // console.log(`ID: ${id}`);
             // console.log(`Station id: ${stationId}`);
 
