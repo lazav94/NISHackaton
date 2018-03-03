@@ -52,26 +52,23 @@ module.exports = async (id, data, type) => {
                 if (text === 'restart') {
                     count = 0;
                     return;
+                } else if (text.toLowerCase().indexOf('gorivo') || text.toLowerCase().indexOf('goriva') ){
+                    await sendOffers(sender, fuel);
+                    count = 3;
+                } else if(text.toLowerCase().indexOf('pumpa') || text.toLowerCase().indexOf('pumpe') ){
+                    await sendGenericTemplate(sender, 'NIS Petrlo Beograd', 'https://banjalucanke.com/wp-content/uploads/2014/08/nis-petrol.jpg', 'NIS Petro Beograd', 'Udaljenost 7.4km ')
+                    count = 4;
+                } else if(text.toLowerCase().indexOf('ponude') || text.toLowerCase().indexOf('ponuda') ){
+                    count = 5;
                 }
+
+
                 console.log(count);
                 switch (count) {
                     case 0:
                         await sendGenericTemplate(sender, 'Dobrodosli u Nis chatbot ✋', 'http://www.romania-insider.com/wp-content/uploads/2012/07/NIS-gazprom1.jpg', 'title', 'subtitle')
                         await sendLocationButton(sender);
                         count++
-                        break;
-                    case 1:
-                        break;
-                    case 2:
-                        if (text === 'Cena goriva') {
-                            await sendOffers(sender, fuel);
-                            count = 3;
-                        } else if (text === 'Najbliza pumpa') {
-                            await sendGenericTemplate(sender, 'NIS Petrlo Beograd', 'https://banjalucanke.com/wp-content/uploads/2014/08/nis-petrol.jpg', 'NIS Petro Beograd', 'Udaljenost 7.4km ')
-                            count = 4;
-                        } else if (text === 'Ponude') {
-                            count = 5;
-                        }
                         break;
                     case 3:
                         break;
@@ -143,13 +140,13 @@ module.exports = async (id, data, type) => {
                 console.log(postback, payload);
 
                 if (payload === 'about') {
-                    await sendTextMessage(sender, ['Industrija nafte i gasa je energetski intezivna industrija i zato su energetska efikasnost i energetske uštede u svim poslovnim oblastima Kompanije veoma značajni za uspešno poslovanje NIS-a u celini. <3']);
+                    await sendQuickReplies(sender, 'Industrija nafte i gasa je energetski intezivna industrija i zato su energetska efikasnost i energetske uštede u svim poslovnim oblastima Kompanije veoma značajni za uspešno poslovanje NIS-a u celini. <3', ['Cena goriva', 'Najbliza pumpa', 'Ponude']);
+
                 } else if (payload.indexOf('gorivo') !== -1) {
                     const i = parseInt(payload[0]);
                     console.log(i);
                     await sendTextMessage(sender, [`Izabrali ste ${fuel[i].name}`]);
                     await sendGenericTemplate(sender, `${fuel[i].name}`, `${fuel[i].image_url}`, `${fuel[i].shortDescription}`, `${fuel[i].name}`);
-
 
                 }
 
