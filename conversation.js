@@ -148,6 +148,9 @@ module.exports = async (id, data, type) => {
                     await sendGenericTemplate(sender, `${fuel[i].name}`, `${fuel[i].image_url}`, `${fuel[i].shortDescription}`, `${fuel[i].name}`);
                     const image_url = await QRQenerator('tekst neki');
                     console.log('Image url' , image_url);
+
+                    await sendOffer(sender, {'name', "oo", image_url})
+
                     // await sendGenericTemplate(sender, 'Dobrodosli u Nis chatbot ✋', `images/${image_url}`, `${fuel[i].name}`, `${fuel[i].shortDescription}`)
 
                 }
