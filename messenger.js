@@ -120,15 +120,15 @@ function sendGenericTemplate(sender, text, image_url, title, subtitle) {
           subtitle,
           image_url,
           buttons: [{
-              title: 'See what we have',
-              type: 'postback',
-              payload: 'show',
-            },
-            {
-              title: 'Show NIS',
-              type: 'postback',
-              payload: 'show',
-            },
+            //   title: 'See what we have',
+            //   type: 'postback',
+            //   payload: 'show',
+            // },
+            // {
+            //   title: 'Show NIS',
+            //   type: 'postback',
+            //   payload: 'show',
+            // },
             {
               title: `About NIS`,
               type: 'postback',

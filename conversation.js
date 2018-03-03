@@ -64,7 +64,7 @@ module.exports = async (id, data, type) => {
                         if (text === 'Cena goriva') {
                             await sendOffers(sender, fuel);
                         } else if (text === 'Najbliza pumpa') {
-                            
+
                         } else if (text === 'Ponude') {
 
                         }
@@ -115,10 +115,10 @@ module.exports = async (id, data, type) => {
                 // );
 
 
-                await sendOffersList(
-                    sender,
-                    offers, ['1', '2']
-                );
+                // await sendOffersList(
+                //     sender,
+                //     offers, ['1', '2']
+                // );
 
 
                 // Logic
@@ -131,6 +131,10 @@ module.exports = async (id, data, type) => {
                     payload
                 } = postback;
                 console.log(postback, payload);
+
+                if(payload === 'about'){
+                    await sendTextMessage(sender, ['Industrija nafte i gasa je energetski intezivna industrija i zato su energetska efikasnost i energetske uštede u svim poslovnim oblastima Kompanije veoma značajni za uspešno poslovanje NIS-a u celini. <3']);
+                }
 
                 console.log(await userInfo(sender));
             }
