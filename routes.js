@@ -13,6 +13,8 @@ module.exports = (app, db) => {
     // 1) When someone is near android send me ID and station id
     app.post('/near', async (res, req) => {
         try {
+
+            console.log(req.body);
             const {
                 id,
                 stationId
