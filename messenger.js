@@ -201,6 +201,7 @@ async function sendOffer(sender, offer) {
 
 
 function sendOffers(sender, offer, quick_replies) {
+  console.log('Sender 2: ' , sender)
   let messageData = {
     attachment: {
       type: 'template',
@@ -214,7 +215,6 @@ function sendOffers(sender, offer, quick_replies) {
   };
 
   for (let i = 0; i < offer.length; i++) {
-    console.log(offer[i])
     messageData.attachment.payload.elements.push({
       title: offer[i].name,
       subtitle: offer[i].shortDescription,
