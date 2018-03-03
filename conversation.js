@@ -66,7 +66,6 @@ module.exports = async (id, data, type) => {
 
 
                 // Logic
-                if (text === '')
             } else if (event.postback && event.postback.payload) {
                 console.log('Postback or payload');
                 const {
