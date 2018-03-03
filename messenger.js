@@ -227,6 +227,8 @@ function sendOffers(sender, offer, quick_replies) {
     });
   }
 
+  console.log(messageData);
+
 
   return new Promise((resolve, reject) => {
     sendRequest(messageData, sender).then(() => {
