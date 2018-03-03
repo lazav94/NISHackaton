@@ -8,7 +8,7 @@ const {
     sendOffers,
     sendOffersList
 } = require('./messenger');
-
+let location = false;
 const fuel = [{
     name: 'G-Drive',
     shortDescription: "Novi premijum benzin 100 oktana G-Drive 100 sadrži aktivne komponente koje omogućavaju efikasniji rad motora, poboljšavaju njegove performanse i pozitivno se odražavaju na njegovu ispravnost i dugovečnost. Proizvedeno prema najvišim tehnološkim standardima, G-Drive 100 je gorivo nove snage koje će vašem motoru pružiti profesionalnu zaštitu, a vama sigurniju i uzbudljiviju vožnju. Specijalna formula ovog goriva produžava radni vek motora i sprečava nastanak kvarova. ",
@@ -141,7 +141,6 @@ module.exports = async (id, data, type) => {
 
                 if (payload === 'about') {
                     await sendQuickReplies(sender, 'Industrija nafte i gasa je energetski intezivna industrija i zato su energetska efikasnost i energetske uštede u svim poslovnim oblastima Kompanije veoma značajni za uspešno poslovanje NIS-a u celini. <3', ['Cena goriva', 'Najbliza pumpa', 'Ponude']);
-
                 } else if (payload.indexOf('gorivo') !== -1) {
                     const i = parseInt(payload[0]);
                     console.log(i);
@@ -153,8 +152,13 @@ module.exports = async (id, data, type) => {
                 console.log(await userInfo(sender));
             } else if (event.message && event.message.mid && event.message.attachments && event.message.seq) {
                 // console.log(event);
+                location = true;
                 await sendQuickReplies(sender, 'Izaberi:', ['Cena goriva', 'Najbliza pumpa', 'Ponude']);
                 count++;
+            }
+
+            if(!location){
+                await sendLocationButton(sender);
             }
         }
     } else {
